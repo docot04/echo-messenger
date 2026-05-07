@@ -1,0 +1,33 @@
+$light-mode: (
+  "light-brown": #bab5a1,
+  "dark-brown": #454138,
+  "disabled-light-brown": #c1bca6,
+  "disabled-dark-brown": #898576,
+  "background-light-brown": #d1cdb7,
+  "background-dark-brown": #ccc8b1,
+  "very-light-brown": #dcd8c0,
+);
+
+$dark-mode: (
+  "dark-brown": #bab5a1,
+  "light-brown": #454138,
+  "disabled-light-brown": #898576,
+  "disabled-dark-brown": #c1bca6,
+  "background-light-brown": #2b2923,
+  "background-dark-brown": #302e29,
+  "very-light-brown": #454138,
+);
+
+@mixin theme($theme-map) {
+  @each $name, $value in $theme-map {
+    --#{$name}: #{$value};
+  }
+}
+
+:root {
+  @include theme($light-mode);
+}
+
+.dark {
+  @include theme($dark-mode);
+}

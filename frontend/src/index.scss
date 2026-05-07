@@ -1,0 +1,13 @@
+@use "./styles/global.scss";
+
+// Font credits: Fontworks
+@font-face {
+  font-family: "FOT-Rodin-Pro";
+  src: url("./fonts/FOT-Rodin Pro M.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "FOT-Rodin-Pro", sans-serif !important;
+}
