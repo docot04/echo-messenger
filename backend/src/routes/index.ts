@@ -1,6 +1,6 @@
 // endpoint         REQTYPE     CONTROLLER
 
-// export { default as user } from "./user"; // /api/user
+export { default as user } from "./user"; // /api/user
 /*
 /                   POST        registerUser
 ?search=            GET         searchUser
@@ -17,7 +17,7 @@
 /friend/all         GET         fetchFriends
 */
 
-// export { default as chat } from "./chat"; // /api/chat
+export { default as chat } from "./chat"; // /api/chat
 /*
 /                   POST        accessChat
 ?limit=2&cursor=    GET         fetchChats
