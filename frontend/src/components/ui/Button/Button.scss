@@ -1,0 +1,155 @@
+.btn {
+  all: unset;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-left: 1rem;
+  position: relative;
+
+  background: linear-gradient(
+    to right,
+    var(--dark-brown) 50%,
+    var(--light-brown) 50%
+  );
+  background-size: 200% 100%;
+  background-position: right bottom;
+
+  transition: 0.1s ease-in-out;
+
+  &:not(.disabled):not(.active):hover {
+    box-shadow: 3px 2px 5px #00000050;
+    background-position: left bottom;
+    color: var(--light-brown);
+
+    .top-bar {
+      transform: translateY(-0.25rem);
+      opacity: 1;
+    }
+
+    .bottom-bar {
+      transform: translateY(0.25rem);
+      opacity: 1;
+    }
+
+    .btn-box {
+      background-color: var(--light-brown);
+    }
+
+    .btn-arrow {
+      opacity: 1;
+    }
+  }
+
+  &.disabled {
+    cursor: not-allowed;
+    color: var(--disabled-dark-brown);
+    background: var(--disabled-light-brown);
+
+    .btn-arrow,
+    .bar {
+      display: none;
+    }
+    .btn-box {
+      background-color: var(--disabled-dark-brown);
+    }
+  }
+
+  &.active {
+    color: var(--light-brown);
+    background: var(--dark-brown);
+    box-shadow: none;
+
+    .bar {
+      opacity: 0;
+    }
+
+    .btn-box {
+      background-color: var(--light-brown);
+    }
+
+    .btn-arrow {
+      opacity: 1;
+
+      &::before {
+        background: var(--very-light-brown);
+        box-shadow: 5px 5px 5px black;
+      }
+    }
+  }
+
+  &.active-top {
+    padding-top: 1rem;
+    margin-top: -1rem;
+  }
+  &.active-bottom {
+    padding-bottom: 1rem;
+    margin-bottom: -1rem;
+  }
+  &.active-left {
+    padding-left: 2rem;
+    margin-left: -2rem;
+  }
+  &.active-right {
+    padding-right: 2rem;
+    margin-right: -2rem;
+  }
+}
+
+.btn-arrow {
+  position: absolute;
+  left: -2.25rem;
+  width: 2rem;
+  height: 2rem;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--dark-brown);
+    clip-path: polygon(100% 50%, 30% 30%, 0% 50%, 30% 70%);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    width: 0.2rem;
+    height: 0.2rem;
+    border-radius: 50%;
+    background: var(--light-brown);
+    box-shadow:
+      1rem -0.75rem 0 var(--dark-brown),
+      1rem 0.75rem 0 var(--dark-brown);
+  }
+}
+
+.bar {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--dark-brown);
+  transition: 0.1s ease;
+
+  &.top-bar {
+    top: 0;
+  }
+
+  &.bottom-bar {
+    bottom: 0;
+  }
+}
+
+.btn-box {
+  width: 0.6rem;
+  height: 0.6rem;
+  background-color: var(--dark-brown);
+  display: inline-block;
+  transition: background-color 0.1s;
+}

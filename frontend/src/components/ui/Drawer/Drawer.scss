@@ -1,0 +1,47 @@
+.drawer {
+  padding: 0 !important;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 270px;
+  background: var(--very-light-brown);
+
+  transition: transform 0.25s ease;
+
+  &.right {
+    right: 0;
+    transform: translateX(100%);
+  }
+
+  &.left {
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  .focus-layer.open & {
+    transform: translateX(0);
+  }
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  .drawer-title {
+    font-size: 1.25rem !important;
+  }
+
+  button {
+    height: 1.5rem;
+    width: 1.5rem;
+    color: var(--dark-brown);
+    background: var(--light-brown);
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    border: none;
+    &:hover {
+      box-shadow: 3px 2px 5px #00000050;
+    }
+  }
+}
