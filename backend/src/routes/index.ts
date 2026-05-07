@@ -27,7 +27,7 @@ export { default as chat } from "./chat"; // /api/chat
 /group/remove       PUT         removeFromGroup
 */
 
-// export { default as message } from "./message"; // /api/message
+export { default as message } from "./message"; // /api/message
 /*
 /                   POST        sendMessage
 /:chatId            GET         fetchMessage
