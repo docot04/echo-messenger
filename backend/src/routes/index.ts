@@ -33,4 +33,4 @@ export { default as message } from "./message"; // /api/message
 /:chatId            GET         fetchMessage
 */
 
-// export { default as health } from "./health"; // /health
+export { default as health } from "./health"; // /health
