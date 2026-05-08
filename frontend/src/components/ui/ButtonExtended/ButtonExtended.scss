@@ -52,7 +52,6 @@
 
       .context1 {
         font-size: 0.85rem;
-
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -65,6 +64,11 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
+    }
+    .context-highlight {
+      background-color: var(--dark-brown);
+      padding: 0 0.2rem;
+      color: var(--light-brown);
     }
   }
 }

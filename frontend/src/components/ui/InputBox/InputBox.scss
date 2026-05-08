@@ -1,0 +1,35 @@
+.inputbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  input {
+    border: 3px solid transparent;
+  }
+}
+
+.inputbox:focus-within {
+  input {
+    border-color: var(--disabled-dark-brown);
+  }
+}
+
+.inputbox.error {
+  input {
+    border-color: var(--red);
+  }
+}
+
+.top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  p {
+    font-weight: 1000;
+    margin: 0;
+    font-size: 0.8rem;
+  }
+  .tooltip {
+    color: var(--red);
+  }
+}

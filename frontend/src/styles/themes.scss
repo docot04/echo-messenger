@@ -6,6 +6,8 @@ $light-mode: (
   "background-light-brown": #d1cdb7,
   "background-dark-brown": #ccc8b1,
   "very-light-brown": #dcd8c0,
+  "red": #ff4d4d,
+  "green": #23e523,
 );
 
 $dark-mode: (
@@ -16,6 +18,8 @@ $dark-mode: (
   "background-light-brown": #2b2923,
   "background-dark-brown": #302e29,
   "very-light-brown": #454138,
+  "error-red": #ff4d4d,
+  "green": #23e523,
 );
 
 @mixin theme($theme-map) {

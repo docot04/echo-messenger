@@ -1,0 +1,40 @@
+.slidingdiv {
+  opacity: 0;
+  animation: slideIn 0.5s ease-out forwards;
+}
+.slide-left {
+  transform: translateX(-3rem);
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+.slide-right {
+  transform: translateX(3rem);
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+.slide-up {
+  transform: translateY(-3rem);
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+.slide-down {
+  transform: translateY(3rem);
+  @keyframes slideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}

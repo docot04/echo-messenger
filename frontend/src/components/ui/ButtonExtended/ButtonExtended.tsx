@@ -4,9 +4,12 @@ import { Button } from "../Button/Button";
 type Props = {
   icon?: string;
   title: string;
+  arrow?: "left" | "right" | "none";
+  bars?: boolean;
   subtitle?: string;
   context1?: string;
   context2?: string;
+  contextHighlight?: boolean;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   disabled?: boolean;
@@ -21,11 +24,18 @@ export const ButtonExtended: React.FC<Props> = ({
   subtitle,
   context1,
   context2,
+  contextHighlight = false,
+  arrow,
+  bars,
+  active,
   ...buttonProps
 }) => {
   return (
     <Button
       {...buttonProps}
+      bars={bars}
+      arrow={arrow}
+      active={active}
       className={`btn-extended ${buttonProps.className || ""}`}
     >
       <div className="content">
@@ -47,7 +57,9 @@ export const ButtonExtended: React.FC<Props> = ({
         </div>
 
         {(context1 || context2) && (
-          <div className="context">
+          <div
+            className={`context ${contextHighlight ? "context-highlight" : ""}`}
+          >
             {context1 && <div className="context1">{context1}</div>}
             {context2 && <div className="context2">{context2}</div>}
           </div>

@@ -1,0 +1,50 @@
+.profilemodal {
+  display: flex;
+  flex-direction: column;
+  width: 32rem;
+}
+
+.profile-top {
+  padding: 1rem 1rem;
+  margin: 0 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 1px solid var(--disabled-dark-brown);
+  border-bottom: 1px solid var(--disabled-dark-brown);
+  img {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  p {
+    font-size: 2rem;
+  }
+}
+
+.bio,
+.date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem 0 1rem;
+  margin: 0;
+}
+.date {
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+.buttons {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.bottom-buttons {
+  display: flex;
+  gap: 0.75rem;
+}

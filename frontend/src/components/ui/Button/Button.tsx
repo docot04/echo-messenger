@@ -3,6 +3,8 @@ import React, { type ButtonHTMLAttributes, type ReactNode } from "react";
 type Props = {
   text?: string;
   box?: boolean;
+  arrow?: "left" | "right" | "none";
+  bars?: boolean;
   active?: "left" | "right" | "top" | "bottom" | "default" | "none";
   height?: string;
   width?: string;
@@ -14,6 +16,8 @@ export const Button: React.FC<Props> = ({
   type = "button",
   className = "",
   box = false,
+  arrow = "left",
+  bars = true,
   disabled = false,
   active = "none",
   height = "3rem",
@@ -23,6 +27,7 @@ export const Button: React.FC<Props> = ({
   ...props
 }) => {
   const isActive = active !== "none";
+  const hasArrow = arrow !== "none";
 
   return (
     <button
@@ -37,9 +42,9 @@ export const Button: React.FC<Props> = ({
     >
       {box && <span className="btn-box" />}
       {children ?? text}
-      <span className="bar top-bar" />
-      <span className="bar bottom-bar" />
-      <span className="btn-arrow" />
+      {bars && <span className="bar top-bar" />}
+      {bars && <span className="bar bottom-bar" />}
+      {hasArrow && <span className={`btn-arrow ${arrow}`} />}
     </button>
   );
 };

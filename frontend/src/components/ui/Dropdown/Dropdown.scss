@@ -1,0 +1,14 @@
+.dropdown {
+  position: absolute;
+  display: flex;
+  background: var(--light-brown);
+  flex-direction: column;
+  padding: 0.25rem 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  z-index: 1000;
+  .dropdown-items {
+    padding: 0.25rem 0;
+    border-top: 1px solid var(--disabled-dark-brown);
+    border-bottom: 1px solid var(--disabled-dark-brown);
+  }
+}
