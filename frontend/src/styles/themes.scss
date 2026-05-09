@@ -6,8 +6,10 @@ $light-mode: (
   "background-light-brown": #d1cdb7,
   "background-dark-brown": #ccc8b1,
   "very-light-brown": #dcd8c0,
+  "constant-light-brown": #bab5a1,
+  "constant-dark-brown": #454138,
   "red": #ff4d4d,
-  "green": #23e523,
+  "green": #35b56a,
 );
 
 $dark-mode: (
@@ -18,8 +20,10 @@ $dark-mode: (
   "background-light-brown": #2b2923,
   "background-dark-brown": #302e29,
   "very-light-brown": #454138,
+  "constant-light-brown": #bab5a1,
+  "constant-dark-brown": #454138,
   "error-red": #ff4d4d,
-  "green": #23e523,
+  "green": #35b56a,
 );
 
 @mixin theme($theme-map) {

@@ -1,5 +1,5 @@
-// import "./Alert/Alert.scss";
-// export { Alert } from "./Alert/Alert";
+import "./Alert/Alert.scss";
+export { Alert } from "./Alert/Alert";
 
 import "./Button/Button.scss";
 export { Button } from "./Button/Button";
