@@ -16,9 +16,6 @@ export { ChatBubble } from "./ChatBubble/ChatBubble";
 import "./Drawer/Drawer.scss";
 export { Drawer } from "./Drawer/Drawer";
 
-/**
- * @TODO Slidingdiv
- */
 import "./Dropdown/Dropdown.scss";
 export { Dropdown } from "./Dropdown/Dropdown";
 
@@ -39,8 +36,6 @@ export { Popup } from "./Popup/Popup";
 
 /**
  * @TODO i18n
- * @TODO Slidingdiv
- * @TODO tests
  */
 import "./ProfileModal/ProfileModal.scss";
 export { ProfileModal } from "./ProfileModal/ProfileModal";
@@ -48,19 +43,14 @@ export { ProfileModal } from "./ProfileModal/ProfileModal";
 import "./SlidingDiv/SlidingDiv.scss";
 export { SlidingDiv } from "./SlidingDiv/SlidingDiv";
 
-/**
- * @TODO fix button + expanddiv alignment
- * @TODO may not need buttonextended (show subtitle at the bottom)
- * @TODO level 2 expanddiv has bar=solid prop
- */
 import "./Tree/Tree.scss";
 export { Tree } from "./Tree/Tree";
 
-/**
- * @TODO dropshadow prop
- */
 import "./Typography/Typography.scss";
 export { Typography } from "./Typography/Typography";
 
-// import "./UserListModal/UserListModal.scss";
-// export { UserListModal } from "./UserListModal/UserListModal";
+/**
+ * @TODO i18n
+ */
+import "./UserListModal/UserListModal.scss";
+export { UserListModal } from "./UserListModal/UserListModal";

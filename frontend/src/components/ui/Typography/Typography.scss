@@ -18,6 +18,10 @@
   &.flicker {
     animation: crtFlicker 0.08s infinite alternate;
   }
+
+  &.shadow {
+    text-shadow: 0.3rem 0.3rem 0 var(--light-brown);
+  }
 }
 
 @keyframes fadeIn {

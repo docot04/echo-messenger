@@ -18,6 +18,7 @@ type Props = {
   className?: string;
   mono?: boolean;
   bordered?: boolean;
+  shadow?: boolean;
 };
 
 export const Typography = ({
@@ -30,6 +31,7 @@ export const Typography = ({
   className = "",
   mono = false,
   bordered = false,
+  shadow = false,
 }: Props) => {
   const [display, setDisplay] = useState("");
 
@@ -118,7 +120,6 @@ export const Typography = ({
           outputArr.current[i] =
             chars[Math.floor(Math.random() * chars.length)];
 
-          // restore shortly after (cheap, no interval)
           setTimeout(() => {
             outputArr.current[i] = original;
           }, 80);
@@ -149,6 +150,7 @@ export const Typography = ({
         flicker && "flicker",
         mono && "mono",
         bordered && "bordered",
+        shadow && "shadow",
         className,
       ]
         .filter(Boolean)

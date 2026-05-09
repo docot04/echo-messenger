@@ -72,9 +72,10 @@ export const Tree = ({ data }: Props) => {
                 className="tree-level2-inner"
               >
                 {isOpen && (
-                  <ExpandDiv bar="faded" body="none" className="tree-children">
+                  <ExpandDiv body="none" bar="none" className="tree-children">
                     {lvl1.children.map((lvl2, j) => (
                       <ButtonExtended
+                        arrow="none"
                         key={j}
                         title={lvl2.title}
                         subtitle={lvl2.subtitle}

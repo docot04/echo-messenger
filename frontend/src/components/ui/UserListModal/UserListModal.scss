@@ -1,0 +1,17 @@
+.userlistmodal {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+  width: 32rem;
+  padding: 0 1rem;
+}
+
+.userlist {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 0.5rem 0 0.5rem 2.5rem;
+  max-height: 24rem;
+  overflow-y: auto;
+  width: 28.5rem;
+}
