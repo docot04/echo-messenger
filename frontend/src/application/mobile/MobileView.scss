@@ -1,0 +1,15 @@
+.mobile {
+  height: 100dvh;
+  width: 100%;
+  padding: 1rem 0;
+  overflow: hidden;
+  .drawer-content {
+    padding-left: 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .drawer-slidediv {
+    height: calc(100vh - 5.5rem);
+  }
+}

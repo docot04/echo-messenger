@@ -1,8 +1,9 @@
-import { WebView } from "./application";
+import { MobileView } from "./application";
 const App = () => {
   return (
     <div>
-      <WebView />
+      <MobileView />
+      {/* <WebView /> */}
     </div>
   );
 };
