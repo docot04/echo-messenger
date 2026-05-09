@@ -1,4 +1,5 @@
 {
+  "echo": "[E]CHO",
   "common": {
     "back": "Back",
     "loading": "Loading...",
@@ -25,6 +26,16 @@
   "menu": {
     "select_users": "Select Users",
     "create_group": "Create Group"
+  },
+  "auth": {
+    "login": "LOGIN",
+    "signup": "SIGNUP",
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "confirm_password": "Confirm Password",
+    "login_instead": "Already have an account? Login instead",
+    "signup_instead": "Signup Instead?"
   },
   "nav": {
     "chats": "CHATS",

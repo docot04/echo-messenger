@@ -4,19 +4,23 @@
   justify-content: center;
 
   input {
-    border: 3px solid var(--light-brown);
+    border: 3px solid transparent !important;
   }
 }
-
+.border {
+  input {
+    border-color: var(--light-brown) !important;
+  }
+}
 .inputbox:focus-within {
   input {
-    border-color: var(--disabled-dark-brown);
+    border-color: var(--disabled-dark-brown) !important;
   }
 }
 
 .inputbox.error {
   input {
-    border-color: var(--red);
+    border-color: var(--red) !important;
   }
 }
 

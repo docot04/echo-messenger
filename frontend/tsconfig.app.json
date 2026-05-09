@@ -10,7 +10,7 @@
     "ignoreDeprecations": "6.0",
     "paths": {
       "@/*": ["src/*"],
-      "@app/*": ["src/app/*"],
+      "@application/*": ["src/application/*"],
       "@components/*": ["src/components/*"],
       "@context/*": ["src/context/*"],
       "@services/*": ["src/services/*"]
