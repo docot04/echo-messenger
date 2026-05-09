@@ -1,0 +1,13 @@
+.web {
+  padding: 1rem 0;
+  .body {
+    height: calc(100vh - 7rem);
+    display: flex;
+    .web-contacts {
+      width: 30% !important;
+    }
+    .tree-root {
+      margin-left: -1rem !important;
+    }
+  }
+}

@@ -21,6 +21,7 @@
 
   &.body-solid {
     background: color-mix(in srgb, var(--very-light-brown) 50%, transparent);
+    box-shadow: 3px 2px 5px #00000050;
   }
 }
 

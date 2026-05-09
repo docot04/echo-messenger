@@ -1,5 +1,10 @@
+import { WebView } from "./application";
 const App = () => {
-  return <div>App</div>;
+  return (
+    <div>
+      <WebView />
+    </div>
+  );
 };
 
 export default App;

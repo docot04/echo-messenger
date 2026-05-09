@@ -1,0 +1,12 @@
+.navbar-web-container {
+  height: 4rem;
+  .slide-inner {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    justify-content: space-around;
+  }
+  .slide-child:first-child {
+    margin: 0 3rem;
+  }
+}

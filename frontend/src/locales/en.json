@@ -43,5 +43,12 @@
     "friends": "FRIENDS",
     "settings": "SYSTEM",
     "menu": "MENU"
+  },
+  "contacts": {
+    "new_group": "New Group"
+  },
+  "home": {
+    "welcome": "Welcome to",
+    "subtitle": "Click on a Contact to begin Chatting"
   }
 }
