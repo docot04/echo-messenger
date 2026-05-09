@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode, useContext } from "react";
-import { StackContext } from "../../../context";
+import { StackContext } from "@/context";
 
 type FocusLayerProps = {
   open: boolean;
