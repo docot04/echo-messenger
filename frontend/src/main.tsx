@@ -1,13 +1,15 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import "./index.scss";
+import { AlertProvider, LanguageProvider } from "./context";
 import App from "./App.tsx";
-import { AlertProvider } from "./context";
+import "./index.scss";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <AlertProvider>
-      <App />
-    </AlertProvider>
+    <LanguageProvider>
+      <AlertProvider>
+        <App />
+      </AlertProvider>
+    </LanguageProvider>
   </StrictMode>,
 );

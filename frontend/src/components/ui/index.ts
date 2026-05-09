@@ -11,9 +11,6 @@ export { Button } from "./Button/Button";
 import "./ButtonExtended/ButtonExtended.scss";
 export { ButtonExtended } from "./ButtonExtended/ButtonExtended";
 
-/**
- * @TODO i18n
- */
 import "./ChatBubble/ChatBubble.scss";
 export { ChatBubble } from "./ChatBubble/ChatBubble";
 
@@ -41,9 +38,6 @@ export { InputBox } from "./InputBox/InputBox";
 import "./Popup/Popup.scss";
 export { Popup } from "./Popup/Popup";
 
-/**
- * @TODO i18n
- */
 import "./ProfileModal/ProfileModal.scss";
 export { ProfileModal } from "./ProfileModal/ProfileModal";
 
@@ -56,8 +50,5 @@ export { Tree } from "./Tree/Tree";
 import "./Typography/Typography.scss";
 export { Typography } from "./Typography/Typography";
 
-/**
- * @TODO i18n
- */
 import "./UserListModal/UserListModal.scss";
 export { UserListModal } from "./UserListModal/UserListModal";

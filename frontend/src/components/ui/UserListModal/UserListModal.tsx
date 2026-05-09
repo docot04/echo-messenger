@@ -3,6 +3,7 @@ import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
 import { ButtonExtended } from "../ButtonExtended/ButtonExtended";
 import { ExpandDiv } from "../ExpandDiv/ExpandDiv";
+import { useLanguage } from "@/context";
 
 type User = {
   id: string;
@@ -25,6 +26,7 @@ export const UserListModal: React.FC<Props> = ({
   submitText = "Submit",
   onSubmit,
 }) => {
+  const { t } = useLanguage();
   const [selected, setSelected] = useState<string[]>([]);
   useEffect(() => {
     if (!open) {
@@ -39,7 +41,7 @@ export const UserListModal: React.FC<Props> = ({
   };
 
   return (
-    <Popup open={open} onClose={onClose} title="Select Users">
+    <Popup open={open} onClose={onClose} title={t("menu.select_users")}>
       <div className="userlistmodal">
         <Button
           text={submitText}

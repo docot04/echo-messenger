@@ -1,0 +1,36 @@
+{
+  "common": {
+    "back": "Back",
+    "loading": "Loading...",
+    "search": "Search",
+    "copy": "Copy",
+    "delete": "Delete",
+    "forward": "Forward",
+    "reply": "Reply",
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "profile": {
+    "profile_details": "Profile Details",
+    "acc_created": "Account created on: ",
+    "edit_profile": "EDIT PROFILE",
+    "send_message": "SEND MESSAGE",
+    "add_friend": "ADD FRIEND",
+    "remove_friend": "REMOVE FRIEND",
+    "block_user": "BLOCK USER",
+    "unblock_user": "UNBLOCK USER",
+    "accept_request": "ACCEPT REQUEST",
+    "reject_request": "REJECT REQUEST"
+  },
+  "menu": {
+    "select_users": "Select Users",
+    "create_group": "Create Group"
+  },
+  "nav": {
+    "chats": "CHATS",
+    "home": "HOME",
+    "friends": "FRIENDS",
+    "settings": "SYSTEM",
+    "menu": "MENU"
+  }
+}

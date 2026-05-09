@@ -1,6 +1,7 @@
 import React from "react";
 import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
+import { useLanguage } from "@/context";
 
 type Props = {
   open: boolean;
@@ -31,6 +32,7 @@ export const ProfileModal: React.FC<Props> = ({
   sentReq = false,
   recReq = false,
 }) => {
+  const { t } = useLanguage();
   let topButton: React.ReactNode = null;
   let bottom1 = {
     text: "",
@@ -42,82 +44,84 @@ export const ProfileModal: React.FC<Props> = ({
   };
 
   if (self) {
-    topButton = <Button text="Edit Profile" width="29rem" />;
+    topButton = <Button box text={t("profile.edit_profile")} width="29rem" />;
   } else if (friend) {
-    topButton = <Button text="Send Message" width="29rem" />;
+    topButton = <Button box text={t("profile.send_message")} width="29rem" />;
 
     bottom1 = {
-      text: "Remove Friend",
+      text: t("profile.remove_friend"),
       disabled: false,
     };
 
     bottom2 = {
-      text: "Block User",
+      text: t("profile.block_user"),
       disabled: false,
     };
   } else if (blocked) {
     bottom1 = {
-      text: "Add Friend",
+      text: t("profile.add_friend"),
       disabled: true,
     };
 
     bottom2 = {
-      text: "Unblock User",
+      text: t("profile.unblock_user"),
       disabled: false,
     };
   } else if (blockedBy) {
     bottom1 = {
-      text: "Add Friend",
+      text: t("profile.add_friend"),
       disabled: true,
     };
 
     bottom2 = {
-      text: "Block User",
+      text: t("profile.block_user"),
       disabled: true,
     };
   } else if (sentReq) {
     bottom1 = {
-      text: "Add Friend",
+      text: t("profile.add_friend"),
       disabled: true,
     };
 
     bottom2 = {
-      text: "Block User",
+      text: t("profile.block_user"),
       disabled: false,
     };
   } else if (recReq) {
     bottom1 = {
-      text: "Accept Request",
+      text: t("profile.accept_request"),
       disabled: false,
     };
 
     bottom2 = {
-      text: "Reject Request",
+      text: t("profile.reject_request"),
       disabled: false,
     };
   } else {
     bottom1 = {
-      text: "Add Friend",
+      text: t("profile.add_friend"),
       disabled: false,
     };
 
     bottom2 = {
-      text: "Block User",
+      text: t("profile.block_user"),
       disabled: false,
     };
   }
 
   return (
-    <Popup open={open} onClose={onClose} title="Account Details">
+    <Popup open={open} onClose={onClose} title={t("profile.profile_details")}>
       <div className="profilemodal">
         <div className="profile-top">
-          <img src={icon} alt="" />
+          <img src={icon} alt={name} />
           <p>{name}</p>
         </div>
 
         <p className="bio">{bio}</p>
 
-        <p className="date">Account created on {datejoined}</p>
+        <p className="date">
+          {t("profile.acc_created")} {datejoined}
+        </p>
 
         <div className="buttons">
           {topButton}
@@ -125,12 +129,13 @@ export const ProfileModal: React.FC<Props> = ({
           {!self && (
             <div className="bottom-buttons">
               <Button
+                box
                 text={bottom1.text}
                 disabled={bottom1.disabled}
                 width="100%"
               />
-
               <Button
+                box
                 text={bottom2.text}
                 disabled={bottom2.disabled}
                 width="100%"

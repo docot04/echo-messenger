@@ -1,6 +1,7 @@
 import React, { useEffect, useState, type ReactNode } from "react";
 import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
+import { useLanguage } from "@/context";
 
 type Props = {
   open: boolean;
@@ -20,6 +21,7 @@ export const FormModal: React.FC<Props> = ({
 
   onConfirm,
 }) => {
+  const { t } = useLanguage();
   const [key, setKey] = useState(0);
 
   useEffect(() => {
@@ -39,8 +41,16 @@ export const FormModal: React.FC<Props> = ({
         {subtitle && <p className="subtitle">{subtitle}</p>}
         <div className="form-content">{children}</div>
         <div className="buttons">
-          <Button text="Confirm" width="14rem" onClick={onConfirm} />
-          <Button text="Cancel" width="14rem" onClick={handleCancel} />
+          <Button
+            text={t("common.confirm")}
+            width="14rem"
+            onClick={onConfirm}
+          />
+          <Button
+            text={t("common.cancel")}
+            width="14rem"
+            onClick={handleCancel}
+          />
         </div>
       </div>
     </Popup>

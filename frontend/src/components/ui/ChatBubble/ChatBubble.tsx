@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Dropdown } from "../Dropdown/Dropdown";
+import { useLanguage } from "@/context";
 
 type Props = {
   sent?: boolean;
@@ -19,29 +20,30 @@ export const ChatBubble: React.FC<Props> = ({
   typing = false,
 }) => {
   const [open, setOpen] = useState(false);
+  const { t } = useLanguage();
 
   const items = sent
     ? [
         {
-          title: "Copy",
+          title: t("common.copy"),
           callback: () => console.log("Copy"),
         },
         {
-          title: "Delete",
+          title: t("common.delete"),
           callback: () => console.log("Delete"),
         },
         {
-          title: "Forward",
+          title: t("common.forward"),
           callback: () => console.log("Forward"),
         },
       ]
     : [
         {
-          title: "Copy",
+          title: t("common.copy"),
           callback: () => console.log("Copy"),
         },
         {
-          title: "Forward",
+          title: t("common.forward"),
           callback: () => console.log("Forward"),
         },
       ];
