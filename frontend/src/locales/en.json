@@ -50,5 +50,52 @@
   "home": {
     "welcome": "Welcome to",
     "subtitle": "Click on a Contact to begin Chatting"
+  },
+  "chat": {
+    "type_message": "Type a message...",
+    "send": "SEND"
+  },
+  "friends": {
+    "search_users": "Search Users",
+    "enter_username": "Enter Username...",
+    "friendlist": "FriendList"
+  },
+  "settings": {
+    "general": "General Settings",
+    "general-change_theme": "Change Theme",
+    "general-change-theme-info": "Toggle Light/Dark Mode",
+    "general-notifications": "Notifications",
+    "general-notifications-info": "Mute/Unmute Notifications",
+    "general-language": "Language",
+    "general-language-info": "Change Language",
+    "general-time_format": "Time Format",
+    "general-time_format-info": "Toggle 12-hour/24-hour Format",
+
+    "profile": "User Profile",
+    "profile-view_profile": "Profile",
+    "profile-view_profile-info": "View your profile",
+    "profile-blocked_users": "Blocked Users",
+    "profile-blocked_users-info": "View users you have blocked",
+    "profile-logout": "Log out",
+    "profile-logout-info": "Log out of current session",
+    "profile-delete_account": "Delete Account",
+    "profile-delete_account-info": "Delete your Account",
+
+    "privacy": "Privacy Settings",
+    "privacy-read_reciepts": "Read Reciepts",
+    "privacy-read_reciepts-": "Read Reciepts",
+    "privacy-typing_indicator": "Typing Indicator",
+    "privacy-online-status": "Set Status",
+    "privacy-blocked_users": "Blocked Users",
+
+    "about_echo": "About [E]cho",
+    "about_echo-data_usage": "Data Usage",
+    "about_echo-data_usage-info": "How we use your Data",
+    "about_echo-app_version": "App Version",
+    "about_echo-app_version-info": "",
+    "about_echo-patch_notes": "Patch Notes",
+    "about_echo-patch_notes-info": "Changes and Bug Fixes",
+    "about_echo-github": "Github",
+    "about_echo-github-info": "Open Github Repository"
   }
 }

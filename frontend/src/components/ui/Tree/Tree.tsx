@@ -80,7 +80,8 @@ export const Tree = ({ data }: Props) => {
                         title={lvl2.title}
                         subtitle={lvl2.subtitle}
                         onClick={lvl2.onClick}
-                        height="4rem"
+                        height="3rem"
+                        bars={false}
                         width="calc(100% - 5rem)"
                       />
                     ))}

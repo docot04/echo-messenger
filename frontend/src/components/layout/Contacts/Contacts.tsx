@@ -10,7 +10,12 @@ export const Contacts = ({ openChat, className = "" }: Props) => {
 
   return (
     <div className={`contacts ${className}`}>
-      <Typography text={t("nav.chats")} reveal className="contacts-heading" />
+      <Typography
+        shadow
+        text={t("nav.chats")}
+        reveal
+        className="contacts-heading"
+      />
       <ExpandDiv scroll bar="faded" body="none" className="contacts-div">
         <div className="contacts-div-content">
           <Button

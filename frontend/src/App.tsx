@@ -1,11 +1,5 @@
-import { MobileView } from "./application";
 const App = () => {
-  return (
-    <div>
-      <MobileView />
-      {/* <WebView /> */}
-    </div>
-  );
+  return <div>App</div>;
 };
 
 export default App;

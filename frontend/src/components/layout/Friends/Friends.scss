@@ -1,0 +1,41 @@
+.friends {
+  flex: 1;
+  padding: 1rem 1rem 0 0;
+  .friends-top {
+    height: 3rem;
+  }
+  .friends-heading {
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+  .friends-search {
+    padding-left: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    .friends-search-box {
+      width: 100% !important;
+      min-width: 2rem;
+    }
+  }
+  .friendlist {
+    .friendlist-content {
+      padding-left: 3.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+}
+
+.web {
+  .friendlist {
+    height: calc(100vh - 17.5rem);
+  }
+}
+.mobile {
+  .friendlist {
+    height: calc(100vh - 16.5rem);
+  }
+}
