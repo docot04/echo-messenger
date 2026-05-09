@@ -1,3 +1,7 @@
+/**
+ * @IMPORTRANT make skeleton components and add them in all relevant components
+ */
+
 import "./Alert/Alert.scss";
 export { Alert } from "./Alert/Alert";
 
@@ -27,6 +31,9 @@ export { ExpandDiv } from "./ExpandDiv/ExpandDiv";
 
 import "./FocusLayer/FocusLayer.scss";
 export { FocusLayer } from "./FocusLayer/FocusLayer";
+
+import "./FormModal/FormModal.scss";
+export { FormModal } from "./FormModal/FormModal";
 
 import "./InputBox/InputBox.scss";
 export { InputBox } from "./InputBox/InputBox";
