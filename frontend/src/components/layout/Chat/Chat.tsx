@@ -11,9 +11,9 @@ import { useLayoutMode } from "@/services";
 const ICON = "https://i.pravatar.cc/100";
 
 type Props = {
-  chatName: string;
-  icon: string;
-  isGroup: boolean;
+  chatName?: string;
+  icon?: string;
+  isGroup?: boolean;
 };
 
 type MockChat = {
@@ -52,7 +52,7 @@ export const Chat = ({
   const chats = generateChats(25);
 
   return (
-    <div className="chat">
+    <div className="chat-main">
       <ButtonExtended
         icon={isGroup ? undefined : icon}
         title={chatName}

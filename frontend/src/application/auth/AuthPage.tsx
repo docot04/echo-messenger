@@ -42,7 +42,7 @@ export const AuthPage = () => {
           <Button
             box
             text={signup ? t("auth.signup") : t("auth.login")}
-            height="3rem"
+            height="2.5rem"
             width="calc(100% - 1rem)"
           />
           <p className="switch" onClick={() => setSignup((prev) => !prev)}>

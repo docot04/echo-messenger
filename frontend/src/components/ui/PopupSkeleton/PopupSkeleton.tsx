@@ -11,7 +11,7 @@ type Props = {
 
 export const PopupSkeleton = ({
   height,
-  width = "32rem",
+  width = "22rem",
   open,
   onClose,
 }: Props) => {

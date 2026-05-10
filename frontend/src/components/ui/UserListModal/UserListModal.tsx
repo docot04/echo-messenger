@@ -45,7 +45,7 @@ export const UserListModal = ({
       <div className="userlistmodal">
         <Button
           text={submitText}
-          width="29rem"
+          width="19rem"
           onClick={() => {
             onSubmit?.(selected);
             onClose();
@@ -61,7 +61,7 @@ export const UserListModal = ({
               title={user.name}
               icon={user.icon}
               height="3rem"
-              width="26.5rem"
+              width="16.5rem"
               active={selected.includes(user.id) ? "right" : "none"}
               onClick={() => toggle(user.id)}
             />
