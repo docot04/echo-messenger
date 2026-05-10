@@ -1,15 +1,19 @@
+/**
+@TODO fix Button behaviour on mobile
+*/
+
 import "./NavbarMobile/NavbarMobile.scss";
 export { NavbarMobile } from "./NavbarMobile/NavbarMobile";
 
 /**
- @TODO make all required props
- @TODO remove tests
- @TODO send on keypress "Enter"
- @TODO "SEND" button changes to ">" in mobile view
- @TODO date tag between the chatbubbles
- @TODO in ChatBubble component, on Hold display bubble menu
- @TODO in ChatBubble component, move bubble menu to the side of the dots 
- */
+@TODO make all required props
+@TODO remove tests
+@TODO send on keypress "Enter"
+@TODO "SEND" button changes to ">" in mobile view
+@TODO date tag between the chatbubbles
+@TODO in ChatBubble component, on Hold display bubble menu
+@TODO in ChatBubble component, move bubble menu to the side of the dots 
+*/
 import "./Chat/Chat.scss";
 export { Chat } from "./Chat/Chat";
 

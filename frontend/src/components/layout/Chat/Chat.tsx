@@ -6,6 +6,7 @@ import {
   ButtonExtended,
 } from "@/components/ui";
 import { useLanguage } from "@/context";
+import { useLayoutMode } from "@/services";
 
 const ICON = "https://i.pravatar.cc/100";
 
@@ -45,6 +46,7 @@ export const Chat = ({
   icon = ICON,
   isGroup = false,
 }: Props) => {
+  const { isMobileUI } = useLayoutMode();
   const { t } = useLanguage();
 
   const chats = generateChats(25);
@@ -78,8 +80,11 @@ export const Chat = ({
 
       <div className="chat-input">
         <InputBox type="text" placeholder={t("chat.type_message")} />
-
-        <Button box text={t("chat.send")} />
+        {isMobileUI ? (
+          <Button width="2rem" text="➤" arrow="none" bars={false} />
+        ) : (
+          <Button box text={t("chat.send")} />
+        )}
       </div>
     </div>
   );

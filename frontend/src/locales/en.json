@@ -60,6 +60,10 @@
     "enter_username": "Enter Username...",
     "friendlist": "FriendList"
   },
+  "misc": {
+    "rotate_screen_title": "Please rotate your device",
+    "rotate_screen_subtitle": "This app only supports portrait mode"
+  },
   "settings": {
     "general": "General Settings",
     "general-change_theme": "Change Theme",

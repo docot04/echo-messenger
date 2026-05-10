@@ -1,5 +1,10 @@
 /**
  * @IMPORTRANT make skeleton components and add them in all relevant components
+ * REQUIRED SKELETONS:
+ * friends search (dropdown extended)
+ * friendlist and contacts (button extended)
+ * (profile modal)
+ * chat (chat bubble)
  */
 
 import "./Alert/Alert.scss";
