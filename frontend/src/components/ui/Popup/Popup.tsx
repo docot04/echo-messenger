@@ -1,4 +1,4 @@
-import React, { type ReactNode } from "react";
+import { type ReactNode } from "react";
 import { FocusLayer } from "../FocusLayer/FocusLayer";
 import { Typography } from "../Typography/Typography";
 
@@ -9,7 +9,7 @@ type Props = {
   children: ReactNode;
 };
 
-export const Popup: React.FC<Props> = ({ open, onClose, title, children }) => {
+export const Popup = ({ open, onClose, title, children }: Props) => {
   return (
     <FocusLayer open={open} onClose={onClose}>
       <div className="popup">

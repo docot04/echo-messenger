@@ -1,0 +1,30 @@
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  margin: 0.25rem;
+  border-radius: 999px;
+  background: var(--light-brown);
+}
+
+.skeleton::after {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--disabled-dark-brown),
+    transparent
+  );
+}
+
+.skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  animation: skeleton-shimmer 1.4s infinite;
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}

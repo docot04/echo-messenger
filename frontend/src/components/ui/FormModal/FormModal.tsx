@@ -1,4 +1,4 @@
-import React, { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
 import { useLanguage } from "@/context";
@@ -12,15 +12,14 @@ type Props = {
   onConfirm?: () => void;
 };
 
-export const FormModal: React.FC<Props> = ({
+export const FormModal = ({
   open,
   onClose,
   title,
   subtitle,
   children,
-
   onConfirm,
-}) => {
+}: Props) => {
   const { t } = useLanguage();
   const [key, setKey] = useState(0);
 
@@ -40,7 +39,7 @@ export const FormModal: React.FC<Props> = ({
       <div className="formmodal" key={key}>
         {subtitle && <p className="subtitle">{subtitle}</p>}
         <div className="form-content">{children}</div>
-        <div className="buttons">
+        <div className="formmodal-buttons">
           <Button
             text={t("common.confirm")}
             width="14rem"

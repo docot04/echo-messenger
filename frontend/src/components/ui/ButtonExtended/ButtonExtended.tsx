@@ -38,19 +38,19 @@ export const ButtonExtended: React.FC<Props> = ({
       active={active}
       className={`btn-extended ${buttonProps.className || ""}`}
     >
-      <div className="content">
+      <div className="btn-extended-content">
         {icon && (
-          <div className="icon">
+          <div className="btn-extended-icon">
             <img src={icon} alt="" />
           </div>
         )}
 
-        <div className="main">
-          <div className="title" title={title}>
+        <div className="btn-extended-main">
+          <div className="btn-extended-title" title={title}>
             {title}
           </div>
           {subtitle && (
-            <div className="subtitle" title={subtitle}>
+            <div className="btn-extended-subtitle" title={subtitle}>
               {subtitle}
             </div>
           )}
@@ -58,10 +58,14 @@ export const ButtonExtended: React.FC<Props> = ({
 
         {(context1 || context2) && (
           <div
-            className={`context ${contextHighlight ? "context-highlight" : ""}`}
+            className={`btn-extended-context ${contextHighlight ? "btn-extended-context-highlight" : ""}`}
           >
-            {context1 && <div className="context1">{context1}</div>}
-            {context2 && <div className="context2">{context2}</div>}
+            {context1 && (
+              <div className="btn-extended-context1">{context1}</div>
+            )}
+            {context2 && (
+              <div className="btn-extended-context2">{context2}</div>
+            )}
           </div>
         )}
       </div>

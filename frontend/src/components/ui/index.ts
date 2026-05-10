@@ -1,12 +1,3 @@
-/**
- * @IMPORTRANT make skeleton components and add them in all relevant components
- * REQUIRED SKELETONS:
- * friends search (dropdown extended)
- * friendlist and contacts (button extended)
- * (profile modal)
- * chat (chat bubble)
- */
-
 import "./Alert/Alert.scss";
 export { Alert } from "./Alert/Alert";
 
@@ -16,8 +7,14 @@ export { Button } from "./Button/Button";
 import "./ButtonExtended/ButtonExtended.scss";
 export { ButtonExtended } from "./ButtonExtended/ButtonExtended";
 
+import "./ButtonExtendedSkeleton/ButtonExtendedSkeleton.scss";
+export { ButtonExtendedSkeleton } from "./ButtonExtendedSkeleton/ButtonExtendedSkeleton";
+
 import "./ChatBubble/ChatBubble.scss";
 export { ChatBubble } from "./ChatBubble/ChatBubble";
+
+import "./ChatBubbleSkeleton/ChatBubbleSkeleton.scss";
+export { ChatBubbleSkeleton } from "./ChatBubbleSkeleton/ChatBubbleSkeleton";
 
 import "./Drawer/Drawer.scss";
 export { Drawer } from "./Drawer/Drawer";
@@ -43,11 +40,20 @@ export { InputBox } from "./InputBox/InputBox";
 import "./Popup/Popup.scss";
 export { Popup } from "./Popup/Popup";
 
+import "./PopupSkeleton/PopupSkeleton.scss";
+export { PopupSkeleton } from "./PopupSkeleton/PopupSkeleton";
+
 import "./ProfileModal/ProfileModal.scss";
 export { ProfileModal } from "./ProfileModal/ProfileModal";
 
+import "./Skeleton/Skeleton.scss";
+export { Skeleton } from "./Skeleton/Skeleton";
+
 import "./SlidingDiv/SlidingDiv.scss";
 export { SlidingDiv } from "./SlidingDiv/SlidingDiv";
+
+import "./Spinner/Spinner.scss";
+export { Spinner } from "./Spinner/Spinner";
 
 import "./Tree/Tree.scss";
 export { Tree } from "./Tree/Tree";

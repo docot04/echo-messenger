@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { useLanguage } from "@/context";
 
@@ -11,14 +11,14 @@ type Props = {
   typing?: boolean;
 };
 
-export const ChatBubble: React.FC<Props> = ({
+export const ChatBubble = ({
   sent = false,
   content = "",
   time = "",
   sender = "",
   icon,
   typing = false,
-}) => {
+}: Props) => {
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
 

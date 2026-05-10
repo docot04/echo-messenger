@@ -1,6 +1,6 @@
 .btn-extended {
   padding: 0;
-  .content {
+  .btn-extended-content {
     display: flex;
     align-items: center;
     width: 100%;
@@ -9,8 +9,11 @@
     overflow: hidden;
     gap: 0.75rem;
 
-    .icon {
+    .btn-extended-icon {
       padding: 0.5rem 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       flex: 0 0 auto;
       img {
         width: 2rem;
@@ -20,14 +23,14 @@
       }
     }
 
-    .main {
+    .btn-extended-main {
       flex: 1;
       min-width: 0;
       display: flex;
       flex-direction: column;
       justify-content: center;
 
-      .title {
+      .btn-extended-title {
         display: flex;
         align-items: center;
         height: 1.5rem;
@@ -37,7 +40,7 @@
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      .subtitle {
+      .btn-extended-subtitle {
         display: flex;
         align-items: center;
         height: 1rem;
@@ -49,20 +52,20 @@
       }
     }
 
-    .context {
+    .btn-extended-context {
       flex: 0 0 auto;
       text-align: right;
       display: flex;
       flex-direction: column;
       justify-content: center;
 
-      .context1 {
+      .btn-extended-context1 {
         font-size: 0.85rem;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      .context2 {
+      .btn-extended-context2 {
         font-size: 0.75rem;
         opacity: 0.7;
 
@@ -71,7 +74,7 @@
         text-overflow: ellipsis;
       }
     }
-    .context-highlight {
+    .btn-extended-context-highlight {
       background-color: var(--dark-brown);
       padding: 0 0.2rem;
       color: var(--light-brown);

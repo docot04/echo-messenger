@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { ButtonExtended } from "../ButtonExtended/ButtonExtended";
 
 type DropdownItem = {
@@ -16,13 +16,13 @@ type Props = {
   onClose?: () => void;
 };
 
-export const DropdownExtended: React.FC<Props> = ({
+export const DropdownExtended = ({
   width = "12rem",
   open,
   items,
   className = "",
   onClose,
-}) => {
+}: Props) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

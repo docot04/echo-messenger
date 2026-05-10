@@ -1,4 +1,4 @@
-import React, { type InputHTMLAttributes } from "react";
+import { type InputHTMLAttributes } from "react";
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
   width?: string;
@@ -7,14 +7,14 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
   border?: boolean;
 };
 
-export const InputBox: React.FC<Props> = ({
+export const InputBox = ({
   width = "16rem",
   label,
   error,
   border = false,
   className = "",
   ...props
-}) => {
+}: Props) => {
   return (
     <div
       className={`inputbox ${error ? "error" : ""} ${border ? "border" : ""} ${className}`}

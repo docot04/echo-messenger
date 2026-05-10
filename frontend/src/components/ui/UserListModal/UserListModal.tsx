@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
 import { ButtonExtended } from "../ButtonExtended/ButtonExtended";
@@ -19,13 +19,13 @@ type Props = {
   onSubmit?: (ids: string[]) => void;
 };
 
-export const UserListModal: React.FC<Props> = ({
+export const UserListModal = ({
   open,
   onClose,
   users,
   submitText = "Submit",
   onSubmit,
-}) => {
+}: Props) => {
   const { t } = useLanguage();
   const [selected, setSelected] = useState<string[]>([]);
   useEffect(() => {

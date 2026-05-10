@@ -1,4 +1,4 @@
-import React from "react";
+import { type ReactNode } from "react";
 import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
 import { useLanguage } from "@/context";
@@ -18,7 +18,7 @@ type Props = {
   recReq?: boolean;
 };
 
-export const ProfileModal: React.FC<Props> = ({
+export const ProfileModal = ({
   open,
   onClose,
   name,
@@ -31,9 +31,9 @@ export const ProfileModal: React.FC<Props> = ({
   friend = false,
   sentReq = false,
   recReq = false,
-}) => {
+}: Props) => {
   const { t } = useLanguage();
-  let topButton: React.ReactNode = null;
+  let topButton: ReactNode = null;
   let bottom1 = {
     text: "",
     disabled: false,
