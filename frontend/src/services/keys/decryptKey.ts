@@ -1,5 +1,12 @@
 const encoder = new TextEncoder();
 
+type DecryptPrivateKeyParams = {
+  password: string;
+  encryptedPrivateKey: string;
+  encryptedPrivateKeySalt: string;
+  encryptedPrivateKeyIV: string;
+};
+
 const fromBase64 = (base64: string) => {
   const binary = atob(base64);
   const bytes = new Uint8Array(binary.length);
@@ -14,14 +21,9 @@ const fromBase64 = (base64: string) => {
 export const decryptPrivateKey = async ({
   password,
   encryptedPrivateKey,
-  salt,
-  iv,
-}: {
-  password: string;
-  encryptedPrivateKey: string;
-  salt: string;
-  iv: string;
-}) => {
+  encryptedPrivateKeySalt,
+  encryptedPrivateKeyIV,
+}: DecryptPrivateKeyParams) => {
   // derive aes key
   const baseKey = await crypto.subtle.importKey(
     "raw",
@@ -34,7 +36,7 @@ export const decryptPrivateKey = async ({
   const aesKey = await crypto.subtle.deriveKey(
     {
       name: "PBKDF2",
-      salt: fromBase64(salt),
+      salt: fromBase64(encryptedPrivateKeySalt),
       iterations: 250000,
       hash: "SHA-256",
     },
@@ -51,7 +53,7 @@ export const decryptPrivateKey = async ({
   const decryptedPrivateKeyBuffer = await crypto.subtle.decrypt(
     {
       name: "AES-GCM",
-      iv: fromBase64(iv),
+      iv: fromBase64(encryptedPrivateKeyIV),
     },
     aesKey,
     fromBase64(encryptedPrivateKey),

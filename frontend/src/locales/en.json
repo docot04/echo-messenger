@@ -11,6 +11,16 @@
     "confirm": "Confirm",
     "cancel": "Cancel"
   },
+  "alert": {
+    "fill_fields": "Please fill all the fields",
+    "password_mismatch": "Passwords do not match",
+    "registration_success": "Welcome to Echo",
+    "registration_failed": "Registration Failed",
+    "login_success": "Welcome to Echo",
+    "login_failed": "Login Failed",
+    "failed_session_restore": "Session Restore Failed",
+    "failed_auth": "Authentication Failed"
+  },
   "profile": {
     "profile_details": "Profile Details",
     "acc_created": "Account created on: ",
