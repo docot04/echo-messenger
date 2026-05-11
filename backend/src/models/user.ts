@@ -8,6 +8,7 @@ export interface IUser extends Document {
   publicKey: string;
   encryptedPrivateKey: string;
   encryptedPrivateKeySalt: string;
+  encryptedPrivateKeyIV: string;
   bio?: string;
   pic?: string;
   friends: Types.ObjectId[];
@@ -26,6 +27,7 @@ const userSchema = new Schema<IUser>(
     publicKey: { type: String, required: true },
     encryptedPrivateKey: { type: String, required: true },
     encryptedPrivateKeySalt: { type: String, required: true },
+    encryptedPrivateKeyIV: { type: String, required: true },
     bio: { type: String, default: "" },
     pic: { type: String, default: ENV.DEFAULT_IMAGE },
     friends: [{ type: Schema.Types.ObjectId, ref: "User" }],

@@ -18,6 +18,7 @@ export const registerUser = expressAsyncHandler(
       publicKey,
       encryptedPrivateKey,
       encryptedPrivateKeySalt,
+      encryptedPrivateKeyIV,
     } = req.body;
 
     // check for empty fields
@@ -28,6 +29,7 @@ export const registerUser = expressAsyncHandler(
       publicKey,
       encryptedPrivateKey,
       encryptedPrivateKeySalt,
+      encryptedPrivateKeyIV,
     });
 
     // check if unique entry (name, email)
@@ -51,6 +53,7 @@ export const registerUser = expressAsyncHandler(
       publicKey,
       encryptedPrivateKey,
       encryptedPrivateKeySalt,
+      encryptedPrivateKeyIV,
     });
 
     // return newly created user
@@ -89,6 +92,7 @@ export const authUser = expressAsyncHandler(
       publicKey: user.publicKey,
       encryptedPrivateKey: user.encryptedPrivateKey,
       encryptedPrivateKeySalt: user.encryptedPrivateKeySalt,
+      encryptedPrivateKeyIV: user.encryptedPrivateKeyIV,
       token: config.generateToken(user._id),
     });
   },
