@@ -2,14 +2,16 @@ import { type ReactNode } from "react";
 import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
 import { useLanguage } from "@/context";
+import { PopupSkeleton } from "../PopupSkeleton/PopupSkeleton";
 
 type Props = {
+  loading: boolean;
   open: boolean;
   onClose: () => void;
-  name: string;
-  icon: string;
-  bio: string;
-  datejoined: string;
+  name?: string;
+  icon?: string;
+  bio?: string;
+  datejoined?: string;
   self?: boolean;
   blocked?: boolean;
   blockedBy?: boolean;
@@ -19,6 +21,7 @@ type Props = {
 };
 
 export const ProfileModal = ({
+  loading = false,
   open,
   onClose,
   name,
@@ -109,6 +112,9 @@ export const ProfileModal = ({
     };
   }
 
+  if (loading)
+    return <PopupSkeleton width="22rem" open={open} onClose={onClose} />;
+
   return (
     <Popup open={open} onClose={onClose} title={t("profile.profile_details")}>
       <div className="profilemodal">
@@ -120,7 +126,8 @@ export const ProfileModal = ({
         <p className="bio">{bio}</p>
 
         <p className="date">
-          {t("profile.acc_created")} {datejoined}
+          {t("profile.acc_created")}{" "}
+          {datejoined ? new Date(datejoined).toLocaleDateString("en-IN") : ""}
         </p>
 
         <div className="buttons">

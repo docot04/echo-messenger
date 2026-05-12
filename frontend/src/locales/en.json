@@ -68,7 +68,8 @@
   "friends": {
     "search_users": "Search Users",
     "enter_username": "Enter Username...",
-    "friendlist": "FriendList"
+    "friendlist": "FriendList",
+    "no_users_found": "No Users Found"
   },
   "misc": {
     "rotate_screen_title": "Please rotate your device",

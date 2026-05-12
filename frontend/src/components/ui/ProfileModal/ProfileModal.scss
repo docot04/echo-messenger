@@ -1,11 +1,11 @@
 .profilemodal {
   display: flex;
   flex-direction: column;
-  width: 32rem;
+  width: 22rem;
 }
 
 .profile-top {
-  padding: 1rem 1rem;
+  padding: 0 1rem;
   margin: 0 1rem;
   display: flex;
   align-items: center;
@@ -14,8 +14,8 @@
   border-top: 1px solid var(--disabled-dark-brown);
   border-bottom: 1px solid var(--disabled-dark-brown);
   img {
-    width: 6rem;
-    height: 6rem;
+    width: 3rem;
+    height: 3rem;
     border-radius: 50%;
     object-fit: cover;
   }
@@ -31,6 +31,19 @@
   align-items: center;
   padding: 1rem 1rem 0 1rem;
   margin: 0;
+}
+.bio {
+  font-size: 0.9rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 1rem 0 1rem;
+  margin: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
+  max-width: 100%;
+  text-align: center;
 }
 .date {
   opacity: 0.7;

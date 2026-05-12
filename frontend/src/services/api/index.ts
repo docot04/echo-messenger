@@ -1,1 +1,1 @@
-export { registerUser, authUser } from "./auth.api.ts";
+export { registerUser, authUser, searchUser, getUser } from "./user.api.ts";

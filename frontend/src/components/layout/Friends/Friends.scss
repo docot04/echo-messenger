@@ -8,9 +8,12 @@
     padding-left: 1rem;
     font-size: 1.5rem;
   }
-  .friends-search {
+  .friends-search-wrapper {
+    position: relative;
     padding-left: 1rem;
     padding-bottom: 1rem;
+  }
+  .friends-search {
     display: flex;
     flex-direction: row;
     gap: 1rem;
@@ -27,6 +30,14 @@
       gap: 0.75rem;
     }
   }
+}
+
+.friends-dropdown {
+  position: absolute;
+  top: calc(100% - 0.5rem);
+  left: 1rem;
+  right: 0;
+  z-index: 100;
 }
 
 .web {
