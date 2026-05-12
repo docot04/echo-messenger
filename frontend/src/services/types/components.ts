@@ -5,27 +5,43 @@ import type {
   InputHTMLAttributes,
 } from "react";
 
-export type AlertProp = {
-  text: string;
-  type?: "success" | "info" | "error";
+type LeftRight = "left" | "right";
+type Arrow = LeftRight | "none";
+type ActiveSide = LeftRight | "top" | "bottom" | "default" | "none";
+type WidthHeight = { width?: string; height?: string };
+type OpenClose = { open: boolean; onClose: () => void };
+type Children = { children?: ReactNode };
+type User = { id: string; name: string; icon: string };
+type TreeChild = { title: string; subtitle: string; onClick: () => void };
+type TreeNode = { text: string; children: TreeChild[] };
+type Btn = WidthHeight & { arrow?: Arrow; bars?: boolean; active?: ActiveSide };
+type DropdownBase = {
+  open: boolean;
+  width?: string;
+  className?: string;
+  onClose?: () => void;
 };
 
-export type ButtonProps = {
-  text?: string;
-  box?: boolean;
-  arrow?: "left" | "right" | "none";
-  bars?: boolean;
-  active?: "left" | "right" | "top" | "bottom" | "default" | "none";
-  height?: string;
-  width?: string;
-  children?: ReactNode;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
+export type AlertProp = { text: string; type?: "success" | "info" | "error" };
 
-export type ButtonExtendedProps = {
+export type SpinnerProps = { size?: string };
+
+export type SkeletonProps = {
+  width?: number | string;
+  height?: number | string;
+  theme?: "light" | "dark";
+};
+
+export type ButtonProps = Btn &
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    text?: string;
+    box?: boolean;
+    children?: ReactNode;
+  };
+
+export type ButtonExtendedProps = Btn & {
   icon?: string;
   title: string;
-  arrow?: "left" | "right" | "none";
-  bars?: boolean;
   subtitle?: string;
   context1?: string;
   context2?: string;
@@ -33,16 +49,9 @@ export type ButtonExtendedProps = {
   className?: string;
   disabled?: boolean;
   onClick?: MouseEventHandler<HTMLButtonElement>;
-  active?: "left" | "right" | "top" | "bottom" | "default" | "none";
-  height?: string;
-  width?: string;
 };
 
-export type ButtonExtendedSkeletonProps = {
-  height?: string;
-  width?: string;
-  icon?: boolean;
-};
+export type ButtonExtendedSkeletonProps = WidthHeight & { icon?: boolean };
 
 export type ChatBubbleProps = {
   sent?: boolean;
@@ -58,101 +67,40 @@ export type ChatBubbleSkeletonProps = {
   width?: number | string;
 };
 
-export type DrawerProps = {
-  open: boolean;
-  onClose: () => void;
-  title?: string;
-  closable?: boolean;
-  side?: "left" | "right";
-  children: React.ReactNode;
-};
-
-export type DropdownItem = {
-  title: string;
-  callback: () => void;
-};
-
-export type DropdownProps = {
-  open: boolean;
-  width?: string;
-  arrow?: "left" | "right" | "none";
-  items: DropdownItem[];
-  className?: string;
-  onClose?: () => void;
-};
-
-type DropdownExtendedItem = {
-  id: string;
-  title: string;
+export type ChatProps = {
+  chatName?: string;
   icon?: string;
-  context?: string;
-  callback: () => void;
+  isGroup?: boolean;
 };
 
-export type DropdownExtendedProps = {
-  open: boolean;
-  width?: string;
-  items: DropdownExtendedItem[];
-  className?: string;
-  onClose?: () => void;
-  loading?: boolean;
-  loadingCount?: number;
-  emptyText?: string;
-};
+export type DrawerProps = OpenClose &
+  Children & {
+    title?: string;
+    closable?: boolean;
+    side?: LeftRight;
+  };
 
-export type ExpandDivProps = {
-  children: ReactNode;
-  scroll?: boolean;
-  bar?: "solid" | "faded" | "none";
-  body?: "solid" | "none";
-  className?: string;
-  innerClass?: string;
-  stagger?: number;
-  expandDuration?: number;
-  revealDelay?: number;
-};
+export type FocusLayerProps = OpenClose &
+  Children & {
+    closable?: boolean;
+  };
 
-export type FocusLayerProps = {
-  open: boolean;
-  onClose: () => void;
-  closable?: boolean;
-  children: ReactNode;
-};
-
-export type FormModalProps = {
-  open: boolean;
-  onClose: () => void;
-  title: string;
-  subtitle?: string;
-  children?: ReactNode;
-  onConfirm?: () => void;
-};
-
-export type InputBoxProps = InputHTMLAttributes<HTMLInputElement> & {
-  width?: string;
-  label?: string;
-  error?: string;
-  border?: boolean;
-};
-
-export type PopupProps = {
-  open: boolean;
-  onClose: () => void;
+export type PopupProps = OpenClose & {
   title: string;
   children: ReactNode;
 };
 
-export type PopupSkeletonProps = {
-  height?: string;
-  width?: string;
-  open: boolean;
-  onClose: () => void;
-};
+export type PopupSkeletonProps = OpenClose & WidthHeight;
 
-export type ProfileModalProps = {
+export type FormModalProps = OpenClose &
+  Children & {
+    title: string;
+    subtitle?: string;
+    onConfirm?: () => void;
+  };
+
+export type ProfileModalProps = OpenClose & {
   loading: boolean;
-  open: boolean;
-  onClose: () => void;
   name?: string;
   icon?: string;
   bio?: string;
@@ -165,36 +113,58 @@ export type ProfileModalProps = {
   recReq?: boolean;
 };
 
-export type SkeletonProps = {
-  width?: number | string;
-  height?: number | string;
-  theme?: "light" | "dark";
+export type UserListModalProps = OpenClose & {
+  users: User[];
+  submitText?: string;
+  onSubmit?: (ids: string[]) => void;
 };
 
-export type SlidingDivProps = {
-  children: ReactNode;
+export type DropdownItem = { title: string; callback: () => void };
+
+export type DropdownProps = DropdownBase & {
+  arrow?: Arrow;
+  items: DropdownItem[];
+};
+
+export type DropdownExtendedItem = {
+  id: string;
+  title: string;
+  icon?: string;
+  context?: string;
+  callback: () => void;
+};
+
+export type DropdownExtendedProps = DropdownBase & {
+  items: DropdownExtendedItem[];
+  loading?: boolean;
+  loadingCount?: number;
+  emptyText?: string;
+};
+
+export type InputBoxProps = InputHTMLAttributes<HTMLInputElement> & {
+  width?: string;
+  label?: string;
+  error?: string;
+  border?: boolean;
+};
+
+export type ExpandDivProps = Children & {
+  scroll?: boolean;
+  bar?: "solid" | "faded" | "none";
+  body?: "solid" | "none";
+  className?: string;
+  innerClass?: string;
+  stagger?: number;
+  expandDuration?: number;
+  revealDelay?: number;
+};
+
+export type SlidingDivProps = Children & {
   className?: string;
   direction: "left" | "right" | "up" | "down";
 };
 
-export type SpinnerProps = {
-  size?: string;
-};
-
-type Level2 = {
-  title: string;
-  subtitle: string;
-  onClick: () => void;
-};
-
-type Level1 = {
-  text: string;
-  children: Level2[];
-};
-
-export type TreeProps = {
-  data: Level1[];
-};
+export type TreeProps = { data: TreeNode[] };
 
 export type TypographyProps = {
   text?: string;
@@ -209,31 +179,7 @@ export type TypographyProps = {
   shadow?: boolean;
 };
 
-type User = {
-  id: string;
-  name: string;
-  icon: string;
-};
-
-export type UserListModalProps = {
-  open: boolean;
-  onClose: () => void;
-  users: User[];
-  submitText?: string;
-  onSubmit?: (ids: string[]) => void;
-};
-
-// TODO LATER
-export type ChatProps = {
-  chatName?: string;
-  icon?: string;
-  isGroup?: boolean;
-};
-
-export type ContactsProps = {
-  className?: string;
-  openChat: () => void;
-};
+export type ContactsProps = { className?: string; openChat: () => void };
 
 export type NavbarMobileProps = {
   toggleDrawer: () => void;
@@ -241,7 +187,4 @@ export type NavbarMobileProps = {
   goBack: () => void;
 };
 
-export type NavbarWebProps = {
-  view: string;
-  setView: (view: string) => void;
-};
+export type NavbarWebProps = { view: string; setView: (view: string) => void };
