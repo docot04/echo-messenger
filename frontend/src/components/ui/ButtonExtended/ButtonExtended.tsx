@@ -1,24 +1,7 @@
-import React from "react";
+import { type ButtonExtendedProps } from "@/services";
 import { Button } from "../Button/Button";
 
-type Props = {
-  icon?: string;
-  title: string;
-  arrow?: "left" | "right" | "none";
-  bars?: boolean;
-  subtitle?: string;
-  context1?: string;
-  context2?: string;
-  contextHighlight?: boolean;
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  className?: string;
-  disabled?: boolean;
-  active?: "left" | "right" | "top" | "bottom" | "default" | "none";
-  height?: string;
-  width?: string;
-};
-
-export const ButtonExtended: React.FC<Props> = ({
+export const ButtonExtended = ({
   icon,
   title,
   subtitle,
@@ -28,8 +11,9 @@ export const ButtonExtended: React.FC<Props> = ({
   arrow,
   bars,
   active,
+  onClick,
   ...buttonProps
-}) => {
+}: ButtonExtendedProps) => {
   return (
     <Button
       {...buttonProps}

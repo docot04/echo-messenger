@@ -1,25 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-
+import { type TypographyProps } from "@/services";
 const chars = ["X", "&", "R", "Y", "G", "7", "5", "S", "F", "4", "J", ">"];
-
-type Props = {
-  text?: string;
-
-  // behavior
-  reveal?: boolean;
-  glitch?: boolean;
-  flicker?: boolean;
-
-  // tuning
-  speed?: number;
-  shuffle?: number;
-
-  // styling
-  className?: string;
-  mono?: boolean;
-  bordered?: boolean;
-  shadow?: boolean;
-};
 
 export const Typography = ({
   text = "",
@@ -32,7 +13,7 @@ export const Typography = ({
   mono = false,
   bordered = false,
   shadow = false,
-}: Props) => {
+}: TypographyProps) => {
   const [display, setDisplay] = useState("");
 
   const containerRef = useRef<HTMLDivElement | null>(null);

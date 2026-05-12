@@ -1,16 +1,10 @@
-import type React from "react";
-
-type Props = {
-  children: React.ReactNode;
-  className?: string;
-  direction: "left" | "right" | "up" | "down";
-};
+import { type SlidingDivProps } from "@/services";
 
 export const SlidingDiv = ({
   children,
   className = "",
   direction = "left",
-}: Props) => {
+}: SlidingDivProps) => {
   return (
     <div className={`slidingdiv slide-${direction} ${className}`}>
       {children}

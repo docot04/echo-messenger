@@ -1,20 +1,14 @@
+import { type PopupSkeletonProps } from "@/services";
 import { Popup } from "../Popup/Popup";
 import { Spinner } from "../Spinner/Spinner";
 import { useLanguage } from "@/context";
-
-type Props = {
-  height?: string;
-  width?: string;
-  open: boolean;
-  onClose: () => void;
-};
 
 export const PopupSkeleton = ({
   height,
   width = "22rem",
   open,
   onClose,
-}: Props) => {
+}: PopupSkeletonProps) => {
   const { t } = useLanguage();
   return (
     <Popup open={open} onClose={onClose} title={t("common.loading")}>

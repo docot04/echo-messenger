@@ -1,23 +1,10 @@
 import { useEffect, useState } from "react";
+import { type UserListModalProps } from "@/services";
 import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
 import { ButtonExtended } from "../ButtonExtended/ButtonExtended";
 import { ExpandDiv } from "../ExpandDiv/ExpandDiv";
 import { useLanguage } from "@/context";
-
-type User = {
-  id: string;
-  name: string;
-  icon: string;
-};
-
-type Props = {
-  open: boolean;
-  onClose: () => void;
-  users: User[];
-  submitText?: string;
-  onSubmit?: (ids: string[]) => void;
-};
 
 export const UserListModal = ({
   open,
@@ -25,7 +12,7 @@ export const UserListModal = ({
   users,
   submitText = "Submit",
   onSubmit,
-}: Props) => {
+}: UserListModalProps) => {
   const { t } = useLanguage();
   const [selected, setSelected] = useState<string[]>([]);
   useEffect(() => {

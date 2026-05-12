@@ -1,16 +1,8 @@
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useState } from "react";
+import { type FormModalProps } from "@/services";
 import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
 import { useLanguage } from "@/context";
-
-type Props = {
-  open: boolean;
-  onClose: () => void;
-  title: string;
-  subtitle?: string;
-  children?: ReactNode;
-  onConfirm?: () => void;
-};
 
 export const FormModal = ({
   open,
@@ -19,7 +11,7 @@ export const FormModal = ({
   subtitle,
   children,
   onConfirm,
-}: Props) => {
+}: FormModalProps) => {
   const { t } = useLanguage();
   const [key, setKey] = useState(0);
 

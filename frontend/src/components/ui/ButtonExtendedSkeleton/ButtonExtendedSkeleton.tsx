@@ -1,12 +1,12 @@
+import { type ButtonExtendedSkeletonProps } from "@/services";
 import { Spinner } from "../Spinner/Spinner";
 import { Skeleton } from "../Skeleton/Skeleton";
 
-type Props = { height?: string; width?: string; icon?: boolean };
 export const ButtonExtendedSkeleton = ({
   height = "3rem",
   width = "10rem",
   icon = false,
-}: Props) => {
+}: ButtonExtendedSkeletonProps) => {
   return (
     <div className="button-extended-skeleton" style={{ height, width }}>
       <div className="button-extended-skeleton-content">

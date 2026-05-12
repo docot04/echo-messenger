@@ -1,14 +1,6 @@
+import { type DrawerProps } from "@/services";
 import { FocusLayer } from "../FocusLayer/FocusLayer";
 import { Typography } from "../Typography/Typography";
-
-type Props = {
-  open: boolean;
-  onClose: () => void;
-  title?: string;
-  closable?: boolean;
-  side?: "left" | "right";
-  children: React.ReactNode;
-};
 
 export const Drawer = ({
   open,
@@ -17,7 +9,7 @@ export const Drawer = ({
   closable = true,
   side = "right",
   children,
-}: Props) => {
+}: DrawerProps) => {
   return (
     <FocusLayer open={open} onClose={onClose} closable={closable}>
       <div className={`drawer ${side}`}>

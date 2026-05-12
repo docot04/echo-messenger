@@ -1,19 +1,6 @@
 import { useEffect, useRef } from "react";
+import { type DropdownProps } from "@/services";
 import { Button } from "../Button/Button";
-
-type DropdownItem = {
-  title: string;
-  callback: () => void;
-};
-
-type Props = {
-  open: boolean;
-  width?: string;
-  arrow?: "left" | "right" | "none";
-  items: DropdownItem[];
-  className?: string;
-  onClose?: () => void;
-};
 
 export const Dropdown = ({
   width = "11rem",
@@ -22,7 +9,7 @@ export const Dropdown = ({
   items,
   className = "",
   onClose,
-}: Props) => {
+}: DropdownProps) => {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

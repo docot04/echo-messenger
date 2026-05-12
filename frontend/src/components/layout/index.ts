@@ -1,7 +1,6 @@
 /**
 @TODO fix Button behaviour on mobile
 */
-
 import "./NavbarMobile/NavbarMobile.scss";
 export { NavbarMobile } from "./NavbarMobile/NavbarMobile";
 

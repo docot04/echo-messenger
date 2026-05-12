@@ -1,12 +1,11 @@
+import { type ChatBubbleSkeletonProps } from "@/services";
 import { Skeleton } from "../Skeleton/Skeleton";
 import { Spinner } from "../Spinner/Spinner";
 
-type Props = {
-  sent?: boolean;
-  width?: number | string;
-};
-
-export const ChatBubbleSkeleton = ({ sent = false, width = "20%" }: Props) => {
+export const ChatBubbleSkeleton = ({
+  sent = false,
+  width = "20%",
+}: ChatBubbleSkeletonProps) => {
   return (
     <div className={`chatbubble-skeleton ${sent ? "sent" : "received"}`}>
       {!sent && <Spinner size="1rem" />}

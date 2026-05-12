@@ -1,15 +1,7 @@
 import { useState } from "react";
+import { type ChatBubbleProps } from "@/services";
 import { Dropdown } from "../Dropdown/Dropdown";
 import { useLanguage } from "@/context";
-
-type Props = {
-  sent?: boolean;
-  content?: string;
-  time?: string;
-  sender?: string;
-  icon?: string;
-  typing?: boolean;
-};
 
 export const ChatBubble = ({
   sent = false,
@@ -18,7 +10,7 @@ export const ChatBubble = ({
   sender = "",
   icon,
   typing = false,
-}: Props) => {
+}: ChatBubbleProps) => {
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
 

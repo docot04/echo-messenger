@@ -1,3 +1,4 @@
+import { type ChatProps } from "@/services";
 import {
   ChatBubble,
   Button,
@@ -8,24 +9,16 @@ import {
 import { useLanguage } from "@/context";
 import { useLayoutMode } from "@/services";
 
+// ---- FOR TESTING PURPOSE ----
 const ICON = "https://i.pravatar.cc/100";
-
-type Props = {
-  chatName?: string;
-  icon?: string;
-  isGroup?: boolean;
-};
-
 type MockChat = {
   sent?: boolean;
   content?: string;
   time?: string;
   typing?: boolean;
 };
-
 const generateChats = (n: number): MockChat[] => {
   const messages: MockChat[] = [];
-
   for (let i = 0; i < n - 1; i++) {
     messages.push({
       sent: i % 2 === 0,
@@ -33,19 +26,18 @@ const generateChats = (n: number): MockChat[] => {
       time: `12:${String(i).padStart(2, "0")}AM`,
     });
   }
-
   messages.push({
     typing: true,
   });
-
   return messages;
 };
+// ^^^^ FOR TESTING PURPOSE ^^^^
 
 export const Chat = ({
   chatName = "chat.name",
   icon = ICON,
   isGroup = false,
-}: Props) => {
+}: ChatProps) => {
   const { isMobileUI } = useLayoutMode();
   const { t } = useLanguage();
 

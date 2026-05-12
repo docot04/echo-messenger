@@ -1,24 +1,10 @@
 import { useRef, useState, useEffect } from "react";
+import { type TreeProps } from "@/services";
 import { ExpandDiv } from "../ExpandDiv/ExpandDiv";
 import { Button } from "../Button/Button";
 import { ButtonExtended } from "../ButtonExtended/ButtonExtended";
 
-type Level2 = {
-  title: string;
-  subtitle: string;
-  onClick: () => void;
-};
-
-type Level1 = {
-  text: string;
-  children: Level2[];
-};
-
-type Props = {
-  data: Level1[];
-};
-
-export const Tree = ({ data }: Props) => {
+export const Tree = ({ data }: TreeProps) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
   const [heights, setHeights] = useState<Record<number, number>>({});
   const refs = useRef<Record<number, HTMLDivElement | null>>({});

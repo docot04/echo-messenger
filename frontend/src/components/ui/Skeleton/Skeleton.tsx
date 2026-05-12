@@ -1,14 +1,10 @@
-type Props = {
-  width?: number | string;
-  height?: number | string;
-  theme?: "light" | "dark";
-};
+import { type SkeletonProps } from "@/services";
 
 export function Skeleton({
   width = "100%",
   height = 20,
   theme = "light",
-}: Props) {
+}: SkeletonProps) {
   return (
     <div
       className={`skeleton ${theme}`}

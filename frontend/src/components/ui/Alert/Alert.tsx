@@ -1,9 +1,6 @@
-type Props = {
-  text: string;
-  type?: "success" | "info" | "error";
-};
+import { type AlertProp } from "@/services";
 
-export const Alert = ({ text, type = "info" }: Props) => {
+export const Alert = ({ text, type = "info" }: AlertProp) => {
   return (
     <div className={`alert ${type}`}>
       <p>{text}</p>

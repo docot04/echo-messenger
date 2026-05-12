@@ -1,24 +1,9 @@
 import { type ReactNode } from "react";
+import { type ProfileModalProps } from "@/services";
 import { Popup } from "../Popup/Popup";
 import { Button } from "../Button/Button";
 import { useLanguage } from "@/context";
 import { PopupSkeleton } from "../PopupSkeleton/PopupSkeleton";
-
-type Props = {
-  loading: boolean;
-  open: boolean;
-  onClose: () => void;
-  name?: string;
-  icon?: string;
-  bio?: string;
-  datejoined?: string;
-  self?: boolean;
-  blocked?: boolean;
-  blockedBy?: boolean;
-  friend?: boolean;
-  sentReq?: boolean;
-  recReq?: boolean;
-};
 
 export const ProfileModal = ({
   loading = false,
@@ -34,7 +19,7 @@ export const ProfileModal = ({
   friend = false,
   sentReq = false,
   recReq = false,
-}: Props) => {
+}: ProfileModalProps) => {
   const { t } = useLanguage();
   let topButton: ReactNode = null;
   let bottom1 = {

@@ -1,11 +1,4 @@
-import { type InputHTMLAttributes } from "react";
-
-type Props = InputHTMLAttributes<HTMLInputElement> & {
-  width?: string;
-  label?: string;
-  error?: string;
-  border?: boolean;
-};
+import { type InputBoxProps } from "@/services";
 
 export const InputBox = ({
   width = "16rem",
@@ -14,7 +7,7 @@ export const InputBox = ({
   border = false,
   className = "",
   ...props
-}: Props) => {
+}: InputBoxProps) => {
   return (
     <div
       className={`inputbox ${error ? "error" : ""} ${border ? "border" : ""} ${className}`}

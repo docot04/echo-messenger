@@ -1,11 +1,8 @@
 import { useLanguage } from "@/context";
+import { type ContactsProps } from "@/services";
 import { Button, ButtonExtended, ExpandDiv, Typography } from "@/components/ui";
-type Props = {
-  className?: string;
-  openChat: () => void;
-};
 
-export const Contacts = ({ openChat, className = "" }: Props) => {
+export const Contacts = ({ openChat, className = "" }: ContactsProps) => {
   const { t } = useLanguage();
 
   return (

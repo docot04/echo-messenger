@@ -1,12 +1,8 @@
+import { type NavbarWebProps } from "@/services";
 import { Button, Typography, ExpandDiv } from "@/components/ui";
 import { useLanguage } from "@/context";
 
-type Props = {
-  view: string;
-  setView: (view: string) => void;
-};
-
-export const NavbarWeb = ({ view, setView }: Props) => {
+export const NavbarWeb = ({ view, setView }: NavbarWebProps) => {
   const { t } = useLanguage();
   return (
     <div className="navbar-web-container">

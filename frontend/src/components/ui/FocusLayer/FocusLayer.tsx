@@ -1,12 +1,6 @@
-import { useEffect, useRef, useState, type ReactNode, useContext } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
+import { type FocusLayerProps } from "@/services";
 import { StackContext } from "@/context";
-
-type FocusLayerProps = {
-  open: boolean;
-  onClose: () => void;
-  closable?: boolean;
-  children: ReactNode;
-};
 
 export const FocusLayer = ({
   open,

@@ -1,25 +1,7 @@
 import { useEffect, useRef } from "react";
+import { type DropdownExtendedProps } from "@/services";
 import { ButtonExtended } from "../ButtonExtended/ButtonExtended";
 import { ButtonExtendedSkeleton } from "../ButtonExtendedSkeleton/ButtonExtendedSkeleton";
-
-type DropdownItem = {
-  id: string;
-  title: string;
-  icon?: string;
-  context?: string;
-  callback: () => void;
-};
-
-type Props = {
-  open: boolean;
-  width?: string;
-  items: DropdownItem[];
-  className?: string;
-  onClose?: () => void;
-  loading?: boolean;
-  loadingCount?: number;
-  emptyText?: string;
-};
 
 export const DropdownExtended = ({
   width = "100%",
@@ -30,7 +12,7 @@ export const DropdownExtended = ({
   loading = false,
   loadingCount = 3,
   emptyText,
-}: Props) => {
+}: DropdownExtendedProps) => {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {

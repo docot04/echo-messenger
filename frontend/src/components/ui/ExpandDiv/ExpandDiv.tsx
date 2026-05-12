@@ -1,16 +1,5 @@
 import React, { useEffect, useState } from "react";
-
-type Props = {
-  children: React.ReactNode;
-  scroll?: boolean;
-  bar?: "solid" | "faded" | "none";
-  body?: "solid" | "none";
-  className?: string;
-  innerClass?: string;
-  stagger?: number;
-  expandDuration?: number;
-  revealDelay?: number;
-};
+import { type ExpandDivProps } from "@/services";
 
 export const ExpandDiv = ({
   children,
@@ -22,7 +11,7 @@ export const ExpandDiv = ({
   stagger = 100,
   expandDuration = 300,
   revealDelay = 300,
-}: Props) => {
+}: ExpandDivProps) => {
   const [expanded, setExpanded] = useState(false);
   const [visibleChildren, setVisibleChildren] = useState<boolean[]>([]);
 

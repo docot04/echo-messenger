@@ -1,17 +1,6 @@
-import React, { type ButtonHTMLAttributes, type ReactNode } from "react";
+import { type ButtonProps } from "@/services";
 
-type Props = {
-  text?: string;
-  box?: boolean;
-  arrow?: "left" | "right" | "none";
-  bars?: boolean;
-  active?: "left" | "right" | "top" | "bottom" | "default" | "none";
-  height?: string;
-  width?: string;
-  children?: ReactNode;
-} & ButtonHTMLAttributes<HTMLButtonElement>;
-
-export const Button: React.FC<Props> = ({
+export const Button = ({
   text = "",
   type = "button",
   className = "",
@@ -25,7 +14,7 @@ export const Button: React.FC<Props> = ({
   children,
   onClick,
   ...props
-}) => {
+}: ButtonProps) => {
   const isActive = active !== "none";
   const hasArrow = arrow !== "none";
 
