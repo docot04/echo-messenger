@@ -14,7 +14,12 @@ type Children = { children?: ReactNode };
 type User = { id: string; name: string; icon: string };
 type TreeChild = { title: string; subtitle: string; onClick: () => void };
 type TreeNode = { text: string; children: TreeChild[] };
-type Btn = WidthHeight & { arrow?: Arrow; bars?: boolean; active?: ActiveSide };
+type Btn = WidthHeight & {
+  arrow?: Arrow;
+  bars?: boolean;
+  active?: ActiveSide;
+  notify?: boolean;
+};
 type DropdownBase = {
   open: boolean;
   width?: string;
@@ -99,12 +104,7 @@ export type FormModalProps = OpenClose &
     onConfirm?: () => void;
   };
 
-export type ProfileModalProps = OpenClose & {
-  loading: boolean;
-  name?: string;
-  icon?: string;
-  bio?: string;
-  datejoined?: string;
+type Relationships = {
   self?: boolean;
   blocked?: boolean;
   blockedBy?: boolean;
@@ -113,13 +113,26 @@ export type ProfileModalProps = OpenClose & {
   recReq?: boolean;
 };
 
+export type ProfileModalProps = OpenClose & {
+  loading: boolean;
+  _id?: string;
+  name?: string;
+  icon?: string;
+  bio?: string;
+  datejoined?: string;
+} & Relationships;
+
 export type UserListModalProps = OpenClose & {
   users: User[];
   submitText?: string;
   onSubmit?: (ids: string[]) => void;
 };
 
-export type DropdownItem = { title: string; callback: () => void };
+export type DropdownItem = {
+  title: string;
+  notify?: boolean;
+  callback: () => void;
+};
 
 export type DropdownProps = DropdownBase & {
   arrow?: Arrow;

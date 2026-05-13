@@ -37,6 +37,7 @@ export const Dropdown = ({
             height="2rem"
             width={`calc(${width} - 1rem)`}
             bars={false}
+            notify={item.notify}
             key={index}
             text={item.title}
             onClick={() => {

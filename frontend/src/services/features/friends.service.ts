@@ -1,4 +1,20 @@
-import { searchUser, getUser } from "../api";
+import {
+  searchUser,
+  getUser,
+  fetchFriends,
+  sendFriendReq,
+  acceptFriendReq,
+  rejectFriendReq,
+  removeFriend,
+  blockUser,
+  unblockUser,
+  editProfile,
+} from "../api";
+import type {
+  FetchFriendsResponse,
+  ProfileActionServiceParams,
+  EditProfileServiceParams,
+} from "../types";
 
 // search user
 export type FriendSearchUser = {
@@ -32,6 +48,7 @@ export const searchUserService = async (
 
 // get user
 export type ProfileModalData = {
+  _id: string;
   name: string;
   icon: string;
   bio: string;
@@ -46,9 +63,10 @@ export type ProfileModalData = {
 export const getUserService = async (id: string): Promise<ProfileModalData> => {
   const user = await getUser(id);
   return {
+    _id: user._id,
     name: user.name,
-    icon: user.pic,
-    bio: user.bio,
+    icon: user.pic ?? "",
+    bio: user.bio ?? "",
     datejoined: user.dateJoined,
     self: user.self,
     blocked: user.blocked,
@@ -57,4 +75,70 @@ export const getUserService = async (id: string): Promise<ProfileModalData> => {
     sentReq: user.sentReq,
     recReq: user.recReq,
   };
+};
+
+// fetch friends
+export const fetchFriendsService = async (): Promise<FetchFriendsResponse> => {
+  return await fetchFriends();
+};
+
+// profilemodal services
+export const profileActionService = async ({
+  action,
+  user,
+  t,
+  pushAlert,
+}: ProfileActionServiceParams) => {
+  try {
+    switch (action) {
+      case "add":
+        await sendFriendReq(user);
+        pushAlert(t("friends.friend_request_sent"), "success");
+        break;
+
+      case "accept":
+        await acceptFriendReq(user);
+        pushAlert(t("friends.friend_request_accepted"), "success");
+        break;
+
+      case "reject":
+        await rejectFriendReq(user);
+        pushAlert(t("friends.friend_request_rejected"), "success");
+        break;
+
+      case "remove":
+        await removeFriend(user);
+        pushAlert(t("friends.friend_removed"), "success");
+        break;
+
+      case "block":
+        await blockUser(user);
+        pushAlert(t("friends.user_blocked"), "success");
+        break;
+
+      case "unblock":
+        await unblockUser(user);
+        pushAlert(t("friends.user_unblocked"), "success");
+        break;
+    }
+    return true;
+  } catch (error: any) {
+    pushAlert(error instanceof Error ? error.message : String(error), "error");
+    return false;
+  }
+};
+
+export const editProfileService = async ({
+  payload,
+  t,
+  pushAlert,
+}: EditProfileServiceParams) => {
+  try {
+    await editProfile(payload);
+    pushAlert(t("profile.profile_update_successful"), "success");
+    return true;
+  } catch (error: any) {
+    pushAlert(error instanceof Error ? error.message : String(error), "error");
+    return false;
+  }
 };

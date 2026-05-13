@@ -1,33 +1,6 @@
-import type { TranslationKeys } from "@/locales";
 import { authUser, registerUser } from "../api";
 import { generateEncryptedKeyPair, decryptPrivateKey } from "../keys";
-
-type Translate = (key: TranslationKeys) => string;
-type Alert = (message: string, type?: "success" | "error") => void;
-
-type AuthLogin = (params: {
-  token: string;
-  userId: string;
-  privateKey: CryptoKey;
-}) => Promise<void>;
-
-type RegisterUserParams = {
-  name: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
-  t: Translate;
-  pushAlert: Alert;
-  login: AuthLogin;
-};
-
-type AuthUserParams = {
-  email: string;
-  password: string;
-  t: Translate;
-  pushAlert: Alert;
-  login: AuthLogin;
-};
+import type { RegisterUserParams, AuthUserParams } from "../types";
 
 // register user
 export const registerUserService = async ({

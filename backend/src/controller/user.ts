@@ -253,8 +253,8 @@ export const acceptFriendReq = expressAsyncHandler(
 
     // check if friend request exists
     if (
-      config.hasId(currentUser.pendingRequests, target) ||
-      config.hasId(targetUser.sentRequests, req.user._id)
+      !config.hasId(currentUser.pendingRequests, target) ||
+      !config.hasId(targetUser.sentRequests, req.user._id)
     )
       config.throwError(res, 400, "No Friend Request from this user");
 
@@ -289,8 +289,8 @@ export const rejectFriendReq = expressAsyncHandler(
 
     // check if friend request exists
     if (
-      config.hasId(currentUser.pendingRequests, target) ||
-      config.hasId(targetUser.sentRequests, req.user._id)
+      !config.hasId(currentUser.pendingRequests, target) ||
+      !config.hasId(targetUser.sentRequests, req.user._id)
     )
       config.throwError(res, 400, "No Friend Request from this user");
 

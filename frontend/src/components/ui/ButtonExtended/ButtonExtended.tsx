@@ -20,6 +20,7 @@ export const ButtonExtended = ({
       bars={bars}
       arrow={arrow}
       active={active}
+      onClick={onClick}
       className={`btn-extended ${buttonProps.className || ""}`}
     >
       <div className="btn-extended-content">

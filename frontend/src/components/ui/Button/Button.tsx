@@ -8,6 +8,7 @@ export const Button = ({
   arrow = "left",
   bars = true,
   disabled = false,
+  notify = false,
   active = "none",
   height = "3rem",
   width = "10rem",
@@ -29,6 +30,7 @@ export const Button = ({
       onClick={onClick}
       {...props}
     >
+      {notify && <span className="btn-notify" />}
       {box && <span className="btn-box" />}
       {children ?? text}
       {bars && <span className="bar top-bar" />}

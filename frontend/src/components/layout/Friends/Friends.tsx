@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import {
   Button,
   InputBox,
+  Dropdown,
   DropdownExtended,
+  ButtonExtendedSkeleton,
   ButtonExtended,
   Typography,
   ProfileModal,
@@ -12,9 +14,11 @@ import { useLanguage, useAlert } from "@/context";
 import {
   searchUserService,
   getUserService,
+  fetchFriendsService,
   type FriendSearchUser,
   type FriendDropdownItem,
   type ProfileModalData,
+  type FriendUser,
 } from "@/services";
 
 export const Friends = () => {
@@ -23,12 +27,63 @@ export const Friends = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const [users, setUsers] = useState<FriendDropdownItem[]>([]);
   const [searched, setSearched] = useState(false);
+  const [friendsData, setFriendsData] = useState<{
+    friends: FriendUser[];
+    sentRequests: FriendUser[];
+    recievedRequests: FriendUser[];
+  }>({
+    friends: [],
+    sentRequests: [],
+    recievedRequests: [],
+  });
+  const [friendsLoading, setFriendsLoading] = useState(true);
+  const [activeFriendId, setActiveFriendId] = useState<string | null>(null);
   const [profileOpen, setProfileOpen] = useState(false);
   const [profileData, setProfileData] = useState<ProfileModalData | null>(null);
   const [profileLoading, setProfileLoading] = useState(false);
+  const [friendDropdownOpen, setFriendDropdownOpen] = useState(false);
   const { t } = useLanguage();
   const { pushAlert } = useAlert();
+  const friendTabs = [
+    t("friends.your_friends"),
+    t("friends.sent_requests"),
+    t("friends.pending_requests"),
+  ];
+  const [activeFriendTab, setActiveFriendTab] = useState(friendTabs[0]);
 
+  // call fetch friends on component mount
+  useEffect(() => {
+    const loadFriends = async () => {
+      try {
+        setFriendsLoading(true);
+        const data = await fetchFriendsService();
+        setFriendsData(data);
+      } catch (error: any) {
+        pushAlert(
+          error instanceof Error ? error.message : String(error),
+          "error",
+        );
+      } finally {
+        setFriendsLoading(false);
+      }
+    };
+    loadFriends();
+  }, [pushAlert]);
+
+  // filtering logic
+  const filteredUsers = useMemo(() => {
+    switch (activeFriendTab) {
+      case t("friends.sent_requests"):
+        return friendsData.sentRequests;
+      case t("friends.pending_requests"):
+        return friendsData.recievedRequests;
+      default:
+        return friendsData.friends;
+    }
+  }, [activeFriendTab, friendsData, t]);
+  const hasPendingRequests = friendsData.recievedRequests.length > 0;
+
+  // search user
   const handleSearch = async (
     e: React.SyntheticEvent<HTMLFormElement, SubmitEvent>,
   ) => {
@@ -41,8 +96,11 @@ export const Friends = () => {
       const results = await searchUserService(query, handleUserClick);
       setUsers(results);
       setSearched(true);
-    } catch (err: any) {
-      pushAlert(err, "error");
+    } catch (error: any) {
+      pushAlert(
+        error instanceof Error ? error.message : String(error),
+        "error",
+      );
       setUsers([]);
       setSearched(true);
     } finally {
@@ -50,15 +108,22 @@ export const Friends = () => {
     }
   };
 
+  // open profile on clicking a user
   const handleUserClick = async (user: FriendSearchUser) => {
+    const currentId = user._id;
     try {
+      setActiveFriendId(currentId);
       setProfileOpen(true);
       setProfileData(null);
       setProfileLoading(true);
-      const fullUser = await getUserService(user._id);
+      const fullUser = await getUserService(currentId);
+      if (currentId !== user._id) return;
       setProfileData(fullUser);
-    } catch (err: any) {
-      pushAlert(err, "error");
+    } catch (error: any) {
+      pushAlert(
+        error instanceof Error ? error.message : String(error),
+        "error",
+      );
       setProfileOpen(false);
     } finally {
       setProfileLoading(false);
@@ -101,29 +166,82 @@ export const Friends = () => {
           className="friends-dropdown"
         />
       </div>
-      {/* friendlist */}
       <div className="friendlist">
-        <Typography
-          shadow
-          reveal
-          text={t("friends.friendlist")}
-          className="friends-heading"
-        />
+        <div className="friendlist-top">
+          <Typography
+            shadow
+            reveal
+            text={t("friends.friendlist")}
+            className="friends-heading"
+          />
+          <div className="friendlist-dropdown-wrapper">
+            <Button
+              arrow="none"
+              text={activeFriendTab}
+              height="2.5rem"
+              width="9rem"
+              notify={hasPendingRequests}
+              onClick={() => setFriendDropdownOpen((prev) => !prev)}
+            />
+            <Dropdown
+              arrow="left"
+              width="10rem"
+              open={friendDropdownOpen}
+              onClose={() => setFriendDropdownOpen(false)}
+              items={[
+                {
+                  title: t("friends.your_friends"),
+                  callback: () => setActiveFriendTab(t("friends.your_friends")),
+                },
+                {
+                  title: t("friends.sent_requests"),
+                  callback: () =>
+                    setActiveFriendTab(t("friends.sent_requests")),
+                },
+                {
+                  title: t("friends.pending_requests"),
+                  notify: hasPendingRequests,
+                  callback: () =>
+                    setActiveFriendTab(t("friends.pending_requests")),
+                },
+              ]}
+            />
+          </div>
+        </div>
         <ExpandDiv bar="faded" scroll className="friendlist" body="none">
           <div className="friendlist-content">
-            {/* ONLY FOR TESTING */}
-            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((c) => (
-              <ButtonExtended
-                key={c}
-                icon={`https://i.pravatar.cc/100/${c}`}
-                contextHighlight
-                title={`Contact ${c}`}
-                context2={`ONLINE`}
-                width="calc(100% - 2rem)"
-                height="2.5rem"
-                // active="right"
-              />
-            ))}
+            {friendsLoading ? (
+              Array.from({ length: 6 }).map((_, i) => (
+                <ButtonExtendedSkeleton
+                  key={i}
+                  width="calc(100% - 2rem)"
+                  height="2.5rem"
+                  icon
+                />
+              ))
+            ) : filteredUsers.length === 0 ? (
+              <p className="friendlist-empty">{t("friends.no_users_found")}</p>
+            ) : (
+              filteredUsers.map((user) => (
+                <ButtonExtended
+                  key={user._id}
+                  icon={user.pic}
+                  title={user.name}
+                  width="calc(100% - 2rem)"
+                  height="2.5rem"
+                  active={activeFriendId === user._id ? "right" : undefined}
+                  onClick={() =>
+                    handleUserClick({
+                      _id: user._id,
+                      name: user.name,
+                      email: "",
+                      bio: user.bio,
+                      pic: user.pic,
+                    })
+                  }
+                />
+              ))
+            )}
           </div>
         </ExpandDiv>
       </div>
@@ -132,6 +250,7 @@ export const Friends = () => {
         onClose={() => {
           setProfileOpen(false);
           setProfileData(null);
+          setActiveFriendId(null);
         }}
         loading={profileLoading}
         {...profileData}

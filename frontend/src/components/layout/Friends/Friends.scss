@@ -23,11 +23,25 @@
     }
   }
   .friendlist {
+    .friendlist-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .friendlist-dropdown-wrapper {
+      position: relative;
+    }
     .friendlist-content {
       padding-left: 3.5rem;
       display: flex;
       flex-direction: column;
       gap: 0.75rem;
+      .friendlist-empty {
+        display: flex;
+        justify-content: center;
+      }
     }
   }
 }

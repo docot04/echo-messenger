@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { type ChatBubbleProps } from "@/services";
 import { Dropdown } from "../Dropdown/Dropdown";
-import { useLanguage } from "@/context";
+import { useLanguage, useAlert } from "@/context";
 
 export const ChatBubble = ({
   sent = false,
@@ -13,12 +13,23 @@ export const ChatBubble = ({
 }: ChatBubbleProps) => {
   const [open, setOpen] = useState(false);
   const { t } = useLanguage();
+  const { pushAlert } = useAlert();
+
+  // copy text
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(content);
+      pushAlert(t("common.text_copied"), "success");
+    } catch (err) {
+      pushAlert(t("common.failed_to_copy"), "error");
+    }
+  };
 
   const items = sent
     ? [
         {
           title: t("common.copy"),
-          callback: () => console.log("Copy"),
+          callback: handleCopy,
         },
         {
           title: t("common.delete"),
@@ -32,7 +43,7 @@ export const ChatBubble = ({
     : [
         {
           title: t("common.copy"),
-          callback: () => console.log("Copy"),
+          callback: handleCopy,
         },
         {
           title: t("common.forward"),

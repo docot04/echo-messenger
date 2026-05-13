@@ -5,6 +5,8 @@
     "loading": "Loading...",
     "search": "Search",
     "copy": "Copy",
+    "text_copied": "Text Copied",
+    "failed_to_copy": "Faile to Copy text",
     "delete": "Delete",
     "forward": "Forward",
     "reply": "Reply",
@@ -31,7 +33,10 @@
     "block_user": "BLOCK USER",
     "unblock_user": "UNBLOCK USER",
     "accept_request": "ACCEPT REQUEST",
-    "reject_request": "REJECT REQUEST"
+    "reject_request": "REJECT REQUEST",
+    "profile_update_successful": "Profile Updated Successfully",
+    "bio": "Bio",
+    "pic": "Profile Picture Link"
   },
   "menu": {
     "select_users": "Select Users",
@@ -69,7 +74,16 @@
     "search_users": "Search Users",
     "enter_username": "Enter Username...",
     "friendlist": "FriendList",
-    "no_users_found": "No Users Found"
+    "no_users_found": "No Users Found",
+    "friend_request_sent": "Friend request sent",
+    "friend_request_accepted": "Friend request accepted",
+    "friend_request_rejected": "Friend request rejected",
+    "friend_removed": "Removed friend",
+    "user_blocked": "User blocked",
+    "user_unblocked": "User unblocked",
+    "your_friends": "Your Friends",
+    "sent_requests": "Sent Req",
+    "pending_requests": "Pending Req"
   },
   "misc": {
     "rotate_screen_title": "Please rotate your device",

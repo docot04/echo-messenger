@@ -1,3 +1,32 @@
+import { type TranslationKeys } from "@/locales";
+type Translate = (key: TranslationKeys) => string;
+type Alert = (message: string, type?: "success" | "error") => void;
+
+type ServiceBase = {
+  t: Translate;
+  pushAlert: Alert;
+};
+
+type AuthLogin = (params: {
+  token: string;
+  userId: string;
+  privateKey: CryptoKey;
+}) => Promise<void>;
+
+export type RegisterUserParams = {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+  login: AuthLogin;
+} & ServiceBase;
+
+export type AuthUserParams = {
+  email: string;
+  password: string;
+  login: AuthLogin;
+} & ServiceBase;
+
 type UserId = string;
 
 type UserBase = {
@@ -8,7 +37,7 @@ type UserBase = {
   pic?: string;
 };
 
-type FriendUser = Pick<UserBase, "_id" | "name" | "bio" | "pic">;
+export type FriendUser = Pick<UserBase, "_id" | "name" | "bio" | "pic">;
 
 type CryptoKeys = {
   publicKey: string;
@@ -68,3 +97,20 @@ export type FetchFriendsResponse = {
   sentRequests: FriendUser[];
   recievedRequests: FriendUser[];
 };
+
+export type FriendAction =
+  | "add"
+  | "accept"
+  | "reject"
+  | "remove"
+  | "block"
+  | "unblock";
+
+export type ProfileActionServiceParams = {
+  action: FriendAction;
+  user: FriendPayload;
+} & ServiceBase;
+
+export type EditProfileServiceParams = {
+  payload: EditProfilePayload;
+} & ServiceBase;

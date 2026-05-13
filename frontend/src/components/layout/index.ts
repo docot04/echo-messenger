@@ -20,7 +20,6 @@ export { Chat } from "./Chat/Chat";
 import "./Contacts/Contacts.scss";
 export { Contacts } from "./Contacts/Contacts";
 
-// remove test
 import "./Friends/Friends.scss";
 export { Friends } from "./Friends/Friends";
 

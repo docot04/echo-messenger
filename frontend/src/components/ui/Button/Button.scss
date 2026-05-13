@@ -158,3 +158,13 @@
   display: inline-block;
   transition: background-color 0.1s;
 }
+
+.btn-notify {
+  left: 95%;
+  bottom: 75%;
+  position: absolute;
+  border-radius: 100%;
+  width: 0.75rem;
+  height: 0.75rem;
+  background-color: var(--red);
+}

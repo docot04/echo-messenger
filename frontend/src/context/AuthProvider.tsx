@@ -48,7 +48,11 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           setPrivateKeyState(storedPrivateKey);
         }
       } catch (error) {
-        pushAlert(`${t("alert.failed_session_restore")}:${error}`, "error");
+        const message =
+          error instanceof Error
+            ? error.message
+            : t("alert.failed_session_restore");
+        pushAlert(message, "error");
       } finally {
         setIsReady(true);
       }
