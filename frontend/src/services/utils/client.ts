@@ -17,7 +17,7 @@ export const apiClient = async (
   if (token) {
     headers.Authorization = `Bearer ${token}`;
   }
-  const response = await fetch(`${BASE_URL}${endpoint}`, {
+  const response = await fetch(`${BASE_URL}/api${endpoint}`, {
     ...options,
     headers,
   });
