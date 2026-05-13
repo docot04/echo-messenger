@@ -105,20 +105,33 @@ export const searchUser = expressAsyncHandler(
     const keyword =
       typeof req.query.search === "string"
         ? {
-            $or: [
-              { name: { $regex: req.query.search, $options: "i" } },
-              { email: { $regex: req.query.search, $options: "i" } },
-            ],
+            name: { $regex: req.query.search, $options: "i" },
           }
         : {};
 
-    // return users if any
-    const users = await User.find(keyword)
-      .find({ _id: { $ne: req.user._id } })
+    // fetch users
+    const users = await User.find({
+      ...keyword,
+      _id: { $ne: req.user._id },
+    })
       .limit(10)
-      .select("name email bio pic _id");
+      .select("name email bio pic _id friends");
 
-    res.json(users);
+    const formattedUsers = users.map((user) => {
+      const isFriend = user.friends.some(
+        (id) => id.toString() === req.user._id.toString(),
+      );
+      return {
+        _id: user._id,
+        name: user.name,
+        email: user.email,
+        bio: user.bio,
+        pic: user.pic,
+        friend: isFriend,
+      };
+    });
+
+    res.json(formattedUsers);
   },
 );
 
@@ -422,6 +435,23 @@ export const fetchFriends = expressAsyncHandler(
       friends: user.friends,
       sentRequests: user.sentRequests,
       recievedRequests: user.pendingRequests,
+    });
+  },
+);
+
+// fetch blocked users
+export const fetchBlocked = expressAsyncHandler(
+  async (req: AuthRequest, res: Response) => {
+    const user = await User.findById(req.user._id).populate(
+      "blocked",
+      "_id name pic bio",
+    );
+
+    // find user
+    if (!user) return config.throwError(res, 400, "User not found");
+
+    res.json({
+      blocked: user.blocked,
     });
   },
 );

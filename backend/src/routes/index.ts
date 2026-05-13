@@ -15,6 +15,7 @@ export { default as user } from "./user"; // /api/user
 /friend/block       POST        blockUser
 /friend/unblock     POST        unblockUser
 /friend/all         GET         fetchFriends
+/friend/allblocked  GET         fetchBlocked
 */
 
 export { default as chat } from "./chat"; // /api/chat

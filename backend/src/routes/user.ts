@@ -16,5 +16,6 @@ router.post("/friend/remove", protect, user.removeFriend);
 router.post("/friend/block", protect, user.blockUser);
 router.post("/friend/unblock", protect, user.unblockUser);
 router.get("/friend/all", protect, user.fetchFriends);
+router.get("/friend/allblocked", protect, user.fetchBlocked);
 
 export default router;
