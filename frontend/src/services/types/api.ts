@@ -1,6 +1,6 @@
 import { type TranslationKeys } from "@/locales";
-type Translate = (key: TranslationKeys) => string;
 type Alert = (message: string, type?: "success" | "error") => void;
+export type Translate = (key: TranslationKeys) => string;
 
 type ServiceBase = {
   t: Translate;
@@ -84,6 +84,37 @@ export type GetUserResponse = UserBase &
     dateJoined: string;
   };
 
+export type FriendSearchUser = {
+  _id: string;
+  name: string;
+  email: string;
+  bio?: string;
+  pic?: string;
+  friend?: boolean;
+};
+
+export type FriendDropdownItem = {
+  id: string;
+  title: string;
+  icon?: string;
+  context?: string;
+  callback: () => void;
+};
+
+export type ProfileModalData = {
+  _id: string;
+  name: string;
+  icon: string;
+  bio: string;
+  datejoined: string;
+  self?: boolean;
+  blocked?: boolean;
+  blockedBy?: boolean;
+  friend?: boolean;
+  sentReq?: boolean;
+  recReq?: boolean;
+};
+
 export type EditProfilePayload = Partial<
   Pick<UserBase, "name" | "bio" | "pic">
 >;
@@ -96,6 +127,10 @@ export type FetchFriendsResponse = {
   friends: FriendUser[];
   sentRequests: FriendUser[];
   recievedRequests: FriendUser[];
+};
+
+export type FetchBlockedResponse = {
+  blocked: FriendUser[];
 };
 
 export type FriendAction =

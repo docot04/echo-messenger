@@ -93,7 +93,7 @@ export const Friends = () => {
       setLoading(true);
       setDropdownOpen(true);
       setSearched(false);
-      const results = await searchUserService(query, handleUserClick);
+      const results = await searchUserService(query, handleUserClick, t);
       setUsers(results);
       setSearched(true);
     } catch (error: any) {

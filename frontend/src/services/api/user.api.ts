@@ -8,6 +8,7 @@ import type {
   FetchFriendsResponse,
   EditProfilePayload,
   SearchUserResponse,
+  FetchBlockedResponse,
 } from "../types";
 
 // register user
@@ -109,4 +110,9 @@ export const unblockUser = async (payload: FriendPayload) => {
 // fetchFriends
 export const fetchFriends = async (): Promise<FetchFriendsResponse> => {
   return apiClient("/user/friend/all", { method: "GET" });
+};
+
+// fetchBlocked
+export const fetchBlocked = async (): Promise<FetchBlockedResponse> => {
+  return apiClient("/user/friend/allblocked", { method: "GET" });
 };

@@ -11,29 +11,20 @@ import {
   editProfile,
 } from "../api";
 import type {
+  Translate,
+  FriendSearchUser,
+  ProfileModalData,
+  FriendDropdownItem,
   FetchFriendsResponse,
   ProfileActionServiceParams,
   EditProfileServiceParams,
 } from "../types";
 
 // search user
-export type FriendSearchUser = {
-  _id: string;
-  name: string;
-  email: string;
-  bio?: string;
-  pic?: string;
-};
-export type FriendDropdownItem = {
-  id: string;
-  title: string;
-  icon?: string;
-  context?: string;
-  callback: () => void;
-};
 export const searchUserService = async (
   query: string,
   onUserClick: (user: FriendSearchUser) => void,
+  t: Translate,
 ): Promise<FriendDropdownItem[]> => {
   if (!query.trim()) return [];
   const users: FriendSearchUser[] = await searchUser(query);
@@ -41,25 +32,12 @@ export const searchUserService = async (
     id: user._id,
     title: user.name,
     icon: user.pic,
-    context: user.email, // TODO LATER: THIS SHOULD BE FRIENDS/NON FRIENDS STATUS
+    context: user.friend ? t("friends.friend") : undefined,
     callback: () => onUserClick(user),
   }));
 };
 
 // get user
-export type ProfileModalData = {
-  _id: string;
-  name: string;
-  icon: string;
-  bio: string;
-  datejoined: string;
-  self?: boolean;
-  blocked?: boolean;
-  blockedBy?: boolean;
-  friend?: boolean;
-  sentReq?: boolean;
-  recReq?: boolean;
-};
 export const getUserService = async (id: string): Promise<ProfileModalData> => {
   const user = await getUser(id);
   return {
@@ -82,7 +60,7 @@ export const fetchFriendsService = async (): Promise<FetchFriendsResponse> => {
   return await fetchFriends();
 };
 
-// profilemodal services
+// friend actions
 export const profileActionService = async ({
   action,
   user,
@@ -128,6 +106,7 @@ export const profileActionService = async ({
   }
 };
 
+// edit profile
 export const editProfileService = async ({
   payload,
   t,

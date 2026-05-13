@@ -71,6 +71,7 @@
     "send": "SEND"
   },
   "friends": {
+    "friend": "FRIEND",
     "search_users": "Search Users",
     "enter_username": "Enter Username...",
     "friendlist": "FriendList",
