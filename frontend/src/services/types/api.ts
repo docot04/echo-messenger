@@ -8,6 +8,8 @@ type UserBase = {
   pic?: string;
 };
 
+type FriendUser = Pick<UserBase, "_id" | "name" | "bio" | "pic">;
+
 type CryptoKeys = {
   publicKey: string;
   encryptedPrivateKey: string;
@@ -61,4 +63,8 @@ export type FriendPayload = {
   user: UserId;
 };
 
-export type FetchFriendsResponse = Pick<UserBase, "name" | "bio" | "pic">;
+export type FetchFriendsResponse = {
+  friends: FriendUser[];
+  sentRequests: FriendUser[];
+  recievedRequests: FriendUser[];
+};

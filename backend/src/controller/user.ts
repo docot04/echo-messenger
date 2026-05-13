@@ -67,7 +67,7 @@ export const registerUser = expressAsyncHandler(
   },
 );
 
-// Auth user (login with email + password)
+// auth user (login with email + password)
 export const authUser = expressAsyncHandler(
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
@@ -410,14 +410,18 @@ export const unblockUser = expressAsyncHandler(
 // fetch friends
 export const fetchFriends = expressAsyncHandler(
   async (req: AuthRequest, res: Response) => {
-    const user = await User.findById(req.user._id).populate(
-      "friends",
-      "_id name pic bio",
-    );
+    const user = await User.findById(req.user._id)
+      .populate("friends", "_id name pic bio")
+      .populate("sentRequests", "_id name pic bio")
+      .populate("pendingRequests", "_id name pic bio");
 
     // find user
     if (!user) return config.throwError(res, 400, "User not found");
 
-    res.json(user.friends);
+    res.json({
+      friends: user.friends,
+      sentRequests: user.sentRequests,
+      recievedRequests: user.pendingRequests,
+    });
   },
 );
